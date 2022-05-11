@@ -1,39 +1,31 @@
-Song(s1):
-  title: Piano Sonata No. 3
-  artist: Beethoven
-  duration: 5
-Song(s2):
-  title: Piano Sonata No. 7
-  artist: Beethoven
-  duration: 6
-Song(s3):
-  title: Piano Sonata No. 10
-  artist: Beethoven
-  duration: 8
-Song(s4):
-  title: Piano Concerto No. 27
-  artist: Beethoven
-  duration: 8
-Song(s5):
-  title: Piano Concertos No. 17
-  artist: Beethoven
-Song(s6):
-  title: Piano Concerto No. 10
-  artist: Beethoven
-  duration: 12
+Reading(r1):
+  code: 800
+  temperature: 0.5
+  windSpeed: 3.5
 
-Playlist(p1):
-  title: Bethoven Sonatas
-  duration: 19
-  songs:
-    - s1
-    - s2
-    - s3
+Reading(r2):
+  code: 600
+  temperature: 6.0
+  windSpeed: 3.5
 
-Playlist(p2):
-  title: Bethoven Concertos
-  duration: 23
-  songs:
-    - s4
-    - s5
-    - s6
+Reading(r3):
+  code: 600
+  temperature: 6.0
+  windSpeed: 2
+
+Reading(r4):
+  code: 700
+  temperature: 8.0
+  windSpeed: 1
+
+Station(s1):
+  name: Tramore
+  readings:
+    - r1
+    - r2
+
+Station(s2):
+  name: Dunmore
+  readings:
+    - r3
+    - r4

@@ -1,10 +1,8 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import models.Playlist;
-import models.Song;
+import models.Station;
 import play.Logger;
 import play.mvc.Controller;
 
@@ -14,7 +12,7 @@ public class Dashboard extends Controller
   {
     Logger.info("Rendering Dashboard");
 
-    List<Playlist> playlists = Playlist.findAll();
-    render ("dashboard.html", playlists);
+    List<Station> stations = Station.findAll();
+    render ("dashboard.html", stations);
   }
 }

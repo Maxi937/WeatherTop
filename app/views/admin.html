@@ -11,25 +11,25 @@
     <thead>
       <tr>
         <th>ID </th>
-        <th>Song</th>
-        <th>Artist</th>
-        <th>Duration</th>
+        <th>Weather Code</th>
+        <th>Temperature</th>
+        <th>Wind Speed</th>
       </tr>
     </thead>
     <tbody>
-    #{list items:song, as:'song'}
+    #{list items:reading, as:'reading'}
     <tr>
       <td>
-        ${song.id}
+        ${reading.id}
       </td>
       <td>
-        ${song.title}
+        ${reading.code}
       </td>
       <td>
-        ${song.artist}
+        ${reading.temperature}
       </td>
       <td>
-        ${song.duration}
+        ${reading.windSpeed}
       </td>
     </tr>
     #{/list}

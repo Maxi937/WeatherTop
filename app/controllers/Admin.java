@@ -1,9 +1,8 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import models.Song;
+import models.Reading;
 import play.Logger;
 import play.mvc.Controller;
 
@@ -13,7 +12,7 @@ public class Admin extends Controller
     {
         Logger.info("Rendering Admin");
 
-        List<Song> song = Song.findAll();
-        render ("Admin.html",song);
+        List<Reading> reading = Reading.findAll();
+        render ("Admin.html",reading);
     }
 }
