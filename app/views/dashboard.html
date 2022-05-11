@@ -1,0 +1,11 @@
+#{extends 'main.html' /}
+#{set title:'Dashboard' /}
+
+#{menu id:"dashboard"/}
+
+<section class="ui segment">
+  <h2 class="ui header">
+    Beethoven Sonatas
+  </h2>
+  #{listsongs playlist:playlist/}
+</section>
