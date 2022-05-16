@@ -1,0 +1,47 @@
+#{list items:_station, as:'station'}
+<div class="ui five column grid" id = "dashboard-station-header">
+  <div class = "column">
+    <div class = "ui inverted segment">
+      <div class = "item">
+        <h2>
+          ${station.name}
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div class = "column">
+    <div class = "ui inverted segment">
+      <div class = "item">
+        <h2>
+          Weather
+        </h2>
+        ${station.readings.get(station_index).code}
+      </div>
+    </div>
+  </div>
+  <div class = "column">
+    <div class = "ui inverted segment">
+      <h2>
+        Temp
+      </h2>
+      ${station.readings.get(station_index).temperature}
+    </div>
+  </div>
+  <div class = "column">
+    <div class = "ui inverted segment">
+      <h2>
+        Wind Speed
+      </h2>
+      ${station.readings.get(station_index).windSpeed}
+    </div>
+  </div>
+  <div class = "column">
+    <div class = "ui inverted segment">
+      <h2>
+        Pressure
+      </h2>
+      ${station.readings.get(station_index).windPressure}
+    </div>
+  </div>
+</div>
+#{/list}
