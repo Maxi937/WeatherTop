@@ -3,6 +3,7 @@ package models;
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
+import utils.ReadingAnalytics;
 
 @Entity
 public class Reading extends Model
@@ -18,6 +19,10 @@ public class Reading extends Model
         this.temperature = temperature;
         this.windSpeed = windSpeed;
         this.windPressure = windPressure;
+    }
+
+    public double getFarTemp(){
+       return utils.ReadingAnalytics.getCelsToFar(this.temperature);
     }
 }
 
