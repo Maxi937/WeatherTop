@@ -6,6 +6,7 @@
         <h2>
           ${station.name}
         </h2>
+        <br>
       </div>
     </div>
   </div>
@@ -15,7 +16,9 @@
         <h2>
           Weather
         </h2>
-        ${station.readings.get(station_index).code}
+        <p>
+          ${station.readings.get(station_index).code}
+        </p>
       </div>
     </div>
   </div>
@@ -24,7 +27,9 @@
       <h2>
         Temp
       </h2>
-      ${station.readings.get(station_index).temperature}
+      <p>
+        ${station.readings.get(station_index).temperature}
+      </p>
     </div>
   </div>
   <div class = "column">
@@ -32,7 +37,9 @@
       <h2>
         Wind Speed
       </h2>
-      ${station.readings.get(station_index).windSpeed}
+      <p>
+        ${station.readings.get(station_index).windSpeed}
+      </p>
     </div>
   </div>
   <div class = "column">
@@ -40,7 +47,9 @@
       <h2>
         Pressure
       </h2>
-      ${station.readings.get(station_index).windPressure}
+      <p>
+        ${station.readings.get(station_index).windPressure}
+      </p>
     </div>
   </div>
 </div>
