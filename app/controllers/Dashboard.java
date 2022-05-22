@@ -18,4 +18,12 @@ public class Dashboard extends Controller
     List<Station> stations = Station.findAll();
     render ("dashboard.html", stations);
   }
+
+  public static void addStation (String name)
+  {
+    Station station = new Station (name);
+    Logger.info ("Adding a new Station called " + name);
+    station.save();
+    redirect ("/dashboard");
+  }
 }

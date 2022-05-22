@@ -8,7 +8,8 @@ GET     /dashboard                              Dashboard.index
 GET     /about                                  About.index
 GET     /admin                                  Admin.index
 GET     /station/{id}                           StationCtrl.index
-POST    /station/{id}/addreading               StationCtrl.addReading
+POST    /station/{id}/addreading                StationCtrl.addReading
+POST    /dashboard/addstation                   Dashboard.addStation
 
 # Ignore favicon requests
 GET     /favicon.ico                            404

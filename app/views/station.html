@@ -9,7 +9,12 @@
   <h2 class="ui header">
 
   </h2>
-  #{liststationheader station:station/}
-  #{listreadings station:station/}
+  <!-- Will check if there are actually readings in the station before trying to display latest
+  readings and list of readings > Catch new Stations -->
+  #{if station.readings.size() > 0}
+    #{liststationheader station:station/}
+    #{listreadings station:station/}
+  #{/if}
+
   #{addreading station:station/}
 </section>
