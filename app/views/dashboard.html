@@ -8,8 +8,15 @@
   <h2 class="ui header">
     ${station.name}
   </h2>
-  <a href="/station/${station.id}"> View </a>
+
+  <a href="/station/${station.id}">
+      <i class="bordered grey large link folder icon"></i>
+  </a>
+
+  <a href="#">
+    <i class="bordered grey large link trash icon"></i>
+  </a>
 </section>
 #{/list}
 
-#{addstation station:station/}
+#{addstation /}
