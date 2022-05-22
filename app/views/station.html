@@ -12,7 +12,7 @@
   <!-- Will check if there are actually readings in the station before trying to display latest
   readings and list of readings > Catch new Stations -->
   #{if station.readings.size() > 0}
-    #{liststationheader station:station/}
+    #{laststationreading station:station/}
     #{listreadings station:station/}
   #{/if}
 

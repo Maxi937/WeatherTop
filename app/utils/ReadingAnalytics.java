@@ -6,6 +6,8 @@ import org.yaml.snakeyaml.Yaml;
 import java.util.*;
 import java.io.InputStream;
 
+//ToDo: the maps.yaml is loaded 3 times, only needed once - refactor
+//ToDo: Add Comments
 
 public class ReadingAnalytics {
 
@@ -29,7 +31,6 @@ public class ReadingAnalytics {
     }
 
     public static String getWeatherCode(int weatherCode){
-
         String weatherCodeString;
 
         HashMap<Integer, String> weatherCodes;
@@ -52,7 +53,6 @@ public class ReadingAnalytics {
     }
 
     public static Integer getBeaufortWindSpeed(double windSpeed){
-
         LinkedHashMap<Integer, String> beaufortHashMap;
 
         //ToDO: Load YAML - Move to Function as this is done three times in this class
