@@ -1,65 +1,67 @@
 #{list items:_station, as:'station'}
 <div class="ui five column grid">
-  <div class="stretched row">
-  <div class="column">
-  <div class = "ui padded inverted segment">
-    <div class = "content">
-        <h2 class>
-          ${station.name}
-        </h2>
-      </div>
-  </div>
-  </div>
-  <div class="column">
-  <div class = "ui padded inverted segment">
-    <div class = "content">
-        <h2 class="header">
-          Weather
-        </h2>
-        <p>
-          ${station.getLastReading().getWeatherCode()}
-        </p>
-    </div>
-  </div>
-  </div>
-  <div class="column">
-  <div class = "ui padded inverted segment">
-    <div class = "content">
-      <h2>
-        Temp
-      </h2>
-      <p>
-        ${station.getLastReading().temperature} C <br>
-        ${station.getLastReading().getFarTemp()} F
-      </p>
+    <div class="stretched row">
+        <div class="column">
+            <div class="ui padded inverted segment">
+                <div class="content">
+                    <h2 class>
+                        ${station.name}
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui padded inverted segment">
+                <div class="content">
+                    <h2 class="header">
+                        Weather
+                    </h2>
+                    <p>
+                        ${station.getLastReading().getWeatherCode()}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui padded inverted segment">
+                <div class="content">
+                    <h2>
+                        Temp
+                    </h2>
+                    <p>
+                        ${station.getLastReading().temperature} C <br>
+                        ${station.getLastReading().getFarTemp()} F
+                    </p>
 
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui padded inverted segment">
+                <div class="content">
+                    <h2>
+                        Wind Speed
+                    </h2>
+                    <p>
+                        ${station.getLastReading().getBeaufortWindSpeed()} bft <br>
+                        Feels like <br>
+                        ${station.getLastReading().getWindChill().format("0.00")}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="ui padded inverted segment">
+                <div class="content">
+                    <h2>
+                        Pressure
+                    </h2>
+                    <p>
+                        ${station.getLastReading().windPressure} hpa
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  </div>
-  <div class="column">
-  <div class = "ui padded inverted segment">
-    <div class = "content">
-      <h2>
-        Wind Speed
-      </h2>
-      <p>
-        ${station.getLastReading().getBeaufortWindSpeed()} bft
-      </p>
-    </div>
-  </div>
-  </div>
-  <div class="column">
-  <div class = "ui padded inverted segment">
-    <div class = "content">
-      <h2>
-        Pressure
-      </h2>
-      <p>
-        ${station.getLastReading().windPressure} hpa
-      </p>
-    </div>
-  </div>
-  </div>
-  </div>
 </div>
 #{/list}

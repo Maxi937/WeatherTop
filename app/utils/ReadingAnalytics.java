@@ -4,11 +4,11 @@ import models.Reading;
 import org.yaml.snakeyaml.Yaml;
 
 import java.util.*;
-
 import java.io.InputStream;
 
 
 public class ReadingAnalytics {
+
     public static Reading getLastReading(List<Reading> readings){
         Reading lastReading = null;
 
@@ -19,10 +19,13 @@ public class ReadingAnalytics {
         return lastReading;
     }
 
-    public static double getCelsToFar(double tempCels){
-        double tempFar;
-        tempFar = tempCels * 9/5 + 32;
-        return tempFar;
+    public static double getCelsToFar(double temperatureAsCelsius){
+        return temperatureAsCelsius * 9/5 + 32;
+    }
+
+    public static double getWindChill(double temperatureAsCelsius, double windSpeed){
+        double v = Math.pow(windSpeed, 0.16);
+        return 13.12 + (.6215 * temperatureAsCelsius) - (11.37 * v) + (.3965 * temperatureAsCelsius * v);
     }
 
     public static String getWeatherCode(int weatherCode){

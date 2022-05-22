@@ -1,28 +1,32 @@
 <table class="ui fixed table">
     <thead>
-        <tr>
-            <th>Code</th>
-            <th>Temp</th>
-            <th>Wind Speed</th>
-            <th>Wind Pressure</th>
-        </tr>
+    <tr>
+        <th>Code</th>
+        <th>Temp</th>
+        <th>Wind Speed</th>
+        <th>Wind Pressure</th>
+        <th>Wind Direction</th>
+    </tr>
     </thead>
     <tbody>
-        #{list items:_station.readings, as:'reading'}
-        <tr>
-            <td>
-                ${reading.code}
-            </td>
-            <td>
-                ${reading.temperature}
-            </td>
-            <td>
-                ${reading.windSpeed}
-            </td>
-            <td>
-                ${reading.windPressure}
-            </td>
-        </tr>
-        #{/list}
+    #{list items:_station.readings, as:'reading'}
+    <tr>
+        <td>
+            ${reading.code}
+        </td>
+        <td>
+            ${reading.temperature}
+        </td>
+        <td>
+            ${reading.windSpeed}
+        </td>
+        <td>
+            ${reading.windPressure}
+        </td>
+        <td>
+            ${reading.windDirection}
+        </td>
+    </tr>
+    #{/list}
     </tbody>
 </table>
