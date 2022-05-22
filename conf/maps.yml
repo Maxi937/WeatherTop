@@ -12,6 +12,15 @@ beaufort:
  1: Calm
  5: Light Air
  11: Light Breeze
+ 19: Gentle Breeze
+ 28: Moderate Breeze
+ 38: Fresh Breeze
+ 49: Strong Breeze
+ 61: Near Gale
+ 74: Gale
+ 88: Severe Gale
+ 102: Strong Storm
+ 117: Violent Storm
 
 
 

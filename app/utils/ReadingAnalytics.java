@@ -6,7 +6,6 @@ import org.yaml.snakeyaml.Yaml;
 import java.util.*;
 
 import java.io.InputStream;
-import java.util.stream.Collectors;
 
 
 public class ReadingAnalytics {
@@ -27,9 +26,10 @@ public class ReadingAnalytics {
     }
 
     public static String getWeatherCode(int weatherCode){
-        String weatherCodeString = null;
 
-        HashMap<String, String> weatherCodes = new HashMap<String, String>();
+        String weatherCodeString;
+
+        HashMap<Integer, String> weatherCodes;
 
         Yaml yaml = new Yaml();
         InputStream inputStream = ReadingAnalytics.class
@@ -37,7 +37,7 @@ public class ReadingAnalytics {
                 .getResourceAsStream("maps.yml");
         Map<String, Object> data = (Map<String, Object>) yaml.load(inputStream);
 
-        weatherCodes = (HashMap<String, String>) data.get("weather");
+        weatherCodes = (HashMap<Integer, String>) data.get("weather");
 
         //System.out.println(data.get("weather"));
 
@@ -48,11 +48,8 @@ public class ReadingAnalytics {
     }
 
     public static Integer getBeaufortWindSpeed(double windSpeed){
-        int beaufortInt;
-        int beaufortMax;
-        HashMap<String, Integer> beaufortHashMap;
 
-        List<String> beaufortReading;
+        LinkedHashMap<Integer, String> beaufortHashMap;
 
         Yaml yaml = new Yaml();
         InputStream inputStream = ReadingAnalytics.class
@@ -60,18 +57,24 @@ public class ReadingAnalytics {
                 .getResourceAsStream("maps.yml");
         Map<String, Object> data = (Map<String, Object>) yaml.load(inputStream);
 
-        beaufortHashMap = (HashMap<String, Integer>) data.get("beaufort");
+        beaufortHashMap = (LinkedHashMap<Integer, String>) data.get("beaufort");
 
-        System.out.println(beaufortHashMap);
-        //System.out.println(keySet);
-        //System.out.println(beaufortReading.contains(1));
-        //System.out.println(beaufortReading.size());
+        int index = 0;
+        for (Integer i : beaufortHashMap.keySet()) {
+            System.out.println("i: " + i);
 
-        beaufortInt = beaufortHashMap.get(5);
-        System.out.println(beaufortInt);
-
-        //System.out.println(weatherCodeString);
-        return beaufortInt;
+            if (windSpeed <= i) {
+                int maxSpeed;
+                maxSpeed = i - 1;
+                System.out.println("max speed: " + maxSpeed);
+                if(windSpeed <= maxSpeed){
+                    System.out.println("beaufort: " + index);
+                    return index;
+                }
+                return index;
+            }
+            index++;
+        }
+        return index;
     }
-
 }

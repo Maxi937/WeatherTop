@@ -7,7 +7,7 @@ Reading(r1):
 Reading(r2):
   code: 600
   temperature: 6.0
-  windSpeed: 3.5
+  windSpeed: 2
   windPressure: 1004
 
 Reading(r3):
