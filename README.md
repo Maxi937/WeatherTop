@@ -14,3 +14,8 @@
    - Used for ${station.readings.get(station_index).code}
    - test
 
+3. https://www.baeldung.com/java-snake-yaml
+   - info on SnakeYaml
+   - 
+
+

@@ -27,7 +27,4 @@ public class Station extends Model
        return utils.ReadingAnalytics.getLastReading(this.readings);
     }
 
-
-
-
 }

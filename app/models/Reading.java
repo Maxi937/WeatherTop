@@ -24,5 +24,13 @@ public class Reading extends Model
     public double getFarTemp(){
        return utils.ReadingAnalytics.getCelsToFar(this.temperature);
     }
+
+    public String getWeatherCode(){
+        return utils.ReadingAnalytics.getWeatherCode(this.code);
+    }
+
+    public Integer getBeaufortWindSpeed(){
+        return utils.ReadingAnalytics.getBeaufortWindSpeed(this.windSpeed);
+    }
 }
 

@@ -19,6 +19,9 @@
         <p>
           ${station.getLastReading().code}
         </p>
+        <p>
+          ${station.getLastReading().getWeatherCode()}
+        </p>
       </div>
     </div>
   </div>
@@ -42,6 +45,9 @@
       </h2>
       <p>
         ${station.getLastReading().windSpeed}
+      </p>
+      <p>
+        ${station.getLastReading().getBeaufortWindSpeed()}
       </p>
     </div>
   </div>
