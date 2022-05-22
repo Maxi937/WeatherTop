@@ -44,6 +44,7 @@
                     </h2>
                     <p>
                         ${station.getLastReading().getBeaufortWindSpeed()} bft <br>
+                        ${station.getLastReading().getWindDirectionFacing()}<br>
                         Feels like <br>
                         ${station.getLastReading().getWindChill().format("0.00")}
                     </p>

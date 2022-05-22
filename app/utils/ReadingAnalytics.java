@@ -34,6 +34,7 @@ public class ReadingAnalytics {
 
         HashMap<Integer, String> weatherCodes;
 
+        //ToDO: Load YAML - Move to Function as this is done three times in this class
         Yaml yaml = new Yaml();
         InputStream inputStream = ReadingAnalytics.class
                 .getClassLoader()
@@ -54,6 +55,7 @@ public class ReadingAnalytics {
 
         LinkedHashMap<Integer, String> beaufortHashMap;
 
+        //ToDO: Load YAML - Move to Function as this is done three times in this class
         Yaml yaml = new Yaml();
         InputStream inputStream = ReadingAnalytics.class
                 .getClassLoader()
@@ -64,14 +66,14 @@ public class ReadingAnalytics {
 
         int index = 0;
         for (Integer i : beaufortHashMap.keySet()) {
-            System.out.println("i: " + i);
+            //System.out.println("i: " + i);
 
             if (windSpeed <= i) {
                 int maxSpeed;
                 maxSpeed = i - 1;
-                System.out.println("max speed: " + maxSpeed);
+                //System.out.println("max speed: " + maxSpeed);
                 if(windSpeed <= maxSpeed){
-                    System.out.println("beaufort: " + index);
+                    //System.out.println("beaufort: " + index);
                     return index;
                 }
                 return index;
@@ -79,5 +81,33 @@ public class ReadingAnalytics {
             index++;
         }
         return index;
+    }
+
+    public static String getWindDirection(double windDirection){
+        String weatherDirectionResult = null;
+
+        //ToDO: Load YAML - Move to Function as this is done three times in this class
+        ArrayList<HashMap<String, String>> windDirectionHashMap;
+
+        Yaml yaml = new Yaml();
+        InputStream inputStream = ReadingAnalytics.class
+                .getClassLoader()
+                .getResourceAsStream("maps.yml");
+        Map<String, Object> data = (Map<String, Object>) yaml.load(inputStream);
+
+        //ToDO: Change variable name - this is no longer a hash map, this line takes the windDirection portion of the YAML and loads is to an Array of Hash Maps
+        windDirectionHashMap = (ArrayList<HashMap<String, String>>) data.get("windDirection");
+
+        System.out.println("Direction to check: "+ windDirection);
+
+        for (HashMap<String, String> stringStringHashMap : windDirectionHashMap) {
+            WindReading windReading = new WindReading(stringStringHashMap);
+            if (windReading.checkWindDirection(windDirection)) {
+                System.out.println(windDirection + " is between " + windReading.getWindDirectionMin() + " - " + windReading.getWindDirectionMax());
+                weatherDirectionResult = windReading.getWindDirection();
+            }
+        }
+        System.out.println("Result:" + weatherDirectionResult);
+        return weatherDirectionResult;
     }
 }

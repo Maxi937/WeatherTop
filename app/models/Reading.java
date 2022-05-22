@@ -10,9 +10,9 @@ public class Reading extends Model
     public double temperature;
     public double windSpeed;
     public int windPressure;
-    public int windDirection;
+    public double windDirection;
 
-    public Reading(int code, double temperature, double windSpeed, int windPressure, int windDirection)
+    public Reading(int code, double temperature, double windSpeed, int windPressure, double windDirection)
     {
         this.code = code;
         this.temperature = temperature;
@@ -35,6 +35,11 @@ public class Reading extends Model
 
     public double getWindChill(){
         return utils.ReadingAnalytics.getWindChill(this.temperature, this.windSpeed);
+    }
+
+    //When this function was named "getWindDirection()", the returned value overwrote all windDirection variables?
+    public String getWindDirectionFacing(){
+        return utils.ReadingAnalytics.getWindDirection(this.windDirection);
     }
 }
 
