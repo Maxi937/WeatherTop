@@ -6,6 +6,9 @@ import utils.Anemometer;
 import utils.Compass;
 import utils.Thermometer;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 @Entity
 public class Reading extends Model
 {
@@ -51,6 +54,16 @@ public class Reading extends Model
     public String getCompassDirection(){
         Compass compass = new Compass();
         return compass.getWindDirection(this);
+    }
+
+    public HashMap<String, String> getReadingAsHashMap(){
+        HashMap<String, String> readingAsHashMap = new HashMap<>();
+        readingAsHashMap.put("code", String.valueOf(this.code));
+        readingAsHashMap.put("windSpeed", String.valueOf(this.windSpeed));
+        readingAsHashMap.put("windDirection", String.valueOf(this.windDirection));
+        readingAsHashMap.put("windPressure", String.valueOf(this.windPressure));
+        readingAsHashMap.put("Temp", String.valueOf(this.temperature));
+        return readingAsHashMap;
     }
 }
 

@@ -7,7 +7,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /* TODO: Refactor getBeaufortWindSpeed - Make it an array list of Hash Maps like how the wind direction is done */
-
 public class Anemometer {
     private final Map<String, Object> anemometerData;
 
