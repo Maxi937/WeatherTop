@@ -2,6 +2,9 @@ package models;
 
 import javax.persistence.Entity;
 import play.db.jpa.Model;
+import utils.Anemometer;
+import utils.Compass;
+import utils.Thermometer;
 
 @Entity
 public class Reading extends Model
@@ -12,6 +15,7 @@ public class Reading extends Model
     public int windPressure;
     public double windDirection;
 
+
     public Reading(int code, double temperature, double windSpeed, int windPressure, double windDirection)
     {
         this.code = code;
@@ -21,25 +25,32 @@ public class Reading extends Model
         this.windDirection = windDirection;
     }
 
-    public double getFarTemp(){
-       return utils.ReadingAnalytics.getCelsToFar(this.temperature);
-    }
-
-    public String getWeatherCode(){
-        return utils.ReadingAnalytics.getWeatherCode(this.code);
-    }
-
-    public Integer getBeaufortWindSpeed(){
-        return utils.ReadingAnalytics.getBeaufortWindSpeed(this.windSpeed);
+    public double getCelsiusToFahrenheit(){
+        Thermometer thermometer = new Thermometer();
+        return thermometer.getCelsiusToFahrenheit(this);
     }
 
     public double getWindChill(){
-        return utils.ReadingAnalytics.getWindChill(this.temperature, this.windSpeed);
+        Thermometer thermometer = new Thermometer();
+        return thermometer.getWindChill(this);
+    }
+
+    public String getWeatherCode(){
+        Anemometer anemometer = new Anemometer();
+        return anemometer.getWeatherCode(this);
+    }
+
+    public Integer getBeaufortWindSpeed(){
+        Anemometer anemometer = new Anemometer();
+        return anemometer.getBeaufortWindSpeed(this);
     }
 
     //When this function was named "getWindDirection()", the returned value overwrote all windDirection variables?
-    public String getWindDirectionFacing(){
-        return utils.ReadingAnalytics.getWindDirection(this.windDirection);
+    /* This Function is Evil - After restructuring code into separate instrument classes I renamed the function getWindDirection() -
+    A call to getWindDirection would cause StackOverflow Error - see Notes */
+    public String getCompassDirection(){
+        Compass compass = new Compass();
+        return compass.getWindDirection(this);
     }
 }
 

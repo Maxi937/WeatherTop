@@ -5,8 +5,6 @@ import java.util.List;
 import models.Station;
 import play.Logger;
 import play.mvc.Controller;
-import utils.*;
-
 
 
 public class Dashboard extends Controller
@@ -16,6 +14,7 @@ public class Dashboard extends Controller
     Logger.info("Rendering Dashboard");
 
     List<Station> stations = Station.findAll();
+
     render ("dashboard.html", stations);
   }
 
