@@ -16,7 +16,7 @@ public class StationCtrl extends Controller
 
     }
 
-    public static void addReading(Long id, int code, double temperature, double windSpeed, int windPressure, double windDirection)
+    public static void addReading(Long id, int code, float temperature, float windSpeed, int windPressure, float windDirection)
     {
         Reading reading = new Reading(code, temperature, windSpeed, windPressure, windDirection);
         Station station = Station.findById(id);

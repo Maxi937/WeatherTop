@@ -15,27 +15,26 @@ public class Anemometer {
     }
 
     public String getWeatherCode(Reading reading){
-        String weatherCodeString;
+        String weatherCode;
         HashMap<Integer, String> weatherCodeData;
 
         weatherCodeData = (HashMap<Integer, String>) this.anemometerData.get("weather");
-        weatherCodeString = weatherCodeData.get(reading.code);
+        weatherCode = weatherCodeData.get(reading.code);
 
-        return weatherCodeString;
+        return weatherCode;
     }
 
     public Integer getBeaufortWindSpeed(Reading reading){
-        double windSpeed = reading.windSpeed;
         LinkedHashMap<Integer, String> beaufortScaleData;
-        beaufortScaleData = (LinkedHashMap<Integer, String>) this.anemometerData.get("beaufort");
+        beaufortScaleData = (LinkedHashMap<Integer, String>) this.anemometerData.get("beaufortScale");
 
         int index = 0;
         for (Integer i : beaufortScaleData.keySet()) {
 
-            if (windSpeed <= i) {
+            if (reading.windSpeed <= i) {
                 int maxSpeed;
                 maxSpeed = i - 1;
-                if(windSpeed <= maxSpeed){
+                if(reading.windSpeed <= maxSpeed){
                     return index;
                 }
                 return index;

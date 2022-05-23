@@ -8,7 +8,7 @@ weather:
  700: Snow
  800: Thunder
 
-beaufort:
+beaufortScale:
  1: Calm
  5: Light Air
  11: Light Breeze
@@ -22,7 +22,7 @@ beaufort:
  102: Strong Storm
  117: Violent Storm
 
-windDirection:
+compass:
  - min: "348.75"
    max: "11.25"
    direction: North

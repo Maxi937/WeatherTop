@@ -17,7 +17,7 @@ public class Compass {
     public String getWindDirection(Reading reading){
         String weatherDirectionResult = null;
         ArrayList<HashMap<String, String>> compassData;
-        compassData = (ArrayList<HashMap<String, String>>) this.compassData.get("windDirection");
+        compassData = (ArrayList<HashMap<String, String>>) this.compassData.get("compass");
 
         for (HashMap<String, String> compassDataMap : compassData) {
             double compassDegreeMin = Double.parseDouble(compassDataMap.get("min"));

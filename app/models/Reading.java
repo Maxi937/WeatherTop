@@ -13,13 +13,13 @@ import java.util.HashMap;
 public class Reading extends Model
 {
     public int code;
-    public double temperature;
-    public double windSpeed;
+    public float temperature;
+    public float windSpeed;
     public int windPressure;
-    public double windDirection;
+    public float windDirection;
 
 
-    public Reading(int code, double temperature, double windSpeed, int windPressure, double windDirection)
+    public Reading(int code, float temperature, float windSpeed, int windPressure, float windDirection)
     {
         this.code = code;
         this.temperature = temperature;
@@ -28,7 +28,7 @@ public class Reading extends Model
         this.windDirection = windDirection;
     }
 
-    public double getCelsiusToFahrenheit(){
+    public float getCelsiusToFahrenheit(){
         Thermometer thermometer = new Thermometer();
         return thermometer.getCelsiusToFahrenheit(this);
     }
