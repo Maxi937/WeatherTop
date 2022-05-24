@@ -1,4 +1,4 @@
-package WeatherInstrument;
+package weathertop.weather.instrument;
 
 import org.yaml.snakeyaml.Yaml;
 import play.Logger;

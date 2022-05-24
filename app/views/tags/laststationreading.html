@@ -1,78 +1,113 @@
 #{list items:_station, as:'station'}
-<div class="ui five column grid">
-    <div class="stretched row">
-        <div class="column">
-            <div class="ui padded inverted segment">
-                <div class="content">
-                    <h2 class>
-                        ${station.name}
-                    </h2>
-                    <p>
-                        Lat: ${station.latitude.format("0.000")} <br>
-                        Lng: ${station.longitude.format("0.000")}
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="ui padded inverted segment">
-                <div class="content">
-                    <h2 class="header">
-                        Weather
-                    </h2>
-                    <p>
-                        ${station.getLastReading().getWeatherCode()}
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="ui padded inverted segment">
-                <div class="content">
-                    <h2>
-                        Temp
-                    </h2>
-                    <p>
-                        ${station.getLastReading().temperature} C <br>
-                        ${station.getLastReading().getCelsiusToFahrenheit()} F <br>
-                        Max Temp: ${station.getMinMax("Temp").get("max")} C <br>
-                        Min Temp: ${station.getMinMax("Temp").get("min")} C
-                    </p>
 
-                </div>
-            </div>
+
+<div class="ui right aligned inverted five cards">
+    <div class=" card">
+        <div class="ui inverted segment">
+            <i class="right floated huge violet map marker alternate icon"></i>
+            <h2>
+                ${station.name}
+            </h2>
+            <p>
+                Lat: ${station.latitude.format("0.000")} <br>
+                Lng: ${station.longitude.format("0.000")}
+            </p>
         </div>
-        <div class="column">
-            <div class="ui padded inverted segment">
-                <div class="content">
-                    <h2>
-                        Wind Speed
-                    </h2>
-                    <p>
-                        ${station.getLastReading().getBeaufortWindSpeed()} bft <br>
-                        ${station.getLastReading().getCompassDirection()}<br>
-                        Feels like <br>
-                        ${station.getLastReading().getWindChill().format("0.00")} <br>
-                        Max: ${station.getMinMax("windSpeed").get("max")} KmHr <br>
-                        Min: ${station.getMinMax("windSpeed").get("min")} KmHr
-                    </p>
-                </div>
-            </div>
+    </div>
+
+
+    <div class="card">
+        <div class="ui inverted segment">
+            <i class="nada"id="weatherIcon"></i>
+            <h2>
+                Weather
+            </h2>
+            <p>
+                ${station.getLastReading().getWeatherCode()}
+            </p>
         </div>
-        <div class="column">
-            <div class="ui padded inverted segment">
-                <div class="content">
-                    <h2>
-                        Pressure
-                    </h2>
-                    <p>
-                        ${station.getLastReading().windPressure} hpa <br>
-                        Max: ${station.getMinMax("windPressure").get("max")} KmHr <br>
-                        Min: ${station.getMinMax("windPressure").get("min")} KmHr
-                    </p>
-                </div>
-            </div>
+    </div>
+
+    <div class="card">
+        <div class="ui inverted segment">
+            <i class="right floated huge blue temperature low icon"></i>
+            <h2>
+                Temp
+            </h2>
+            <p>
+                ${station.getLastReading().temperature} C <br>
+                ${station.getLastReading().getCelsiusToFahrenheit()} F <br>
+                Max Temp: ${station.getMinMax("Temp").get("max")} C <br>
+                Min Temp: ${station.getMinMax("Temp").get("min")} C
+            </p>
+        </div>
+
+    </div>
+
+
+    <div class="card">
+        <div class="ui inverted segment">
+            <i class="right floated huge green wind icon"></i>
+            <h2>
+                Wind
+            </h2>
+            <p>
+                ${station.getLastReading().getBeaufortWindSpeed()} bft <br>
+                ${station.getLastReading().getCompassWindDirection()}<br>
+                Feels like <br>
+                ${station.getLastReading().getWindChill().format("0.00")} <br>
+                Max: ${station.getMinMax("windSpeed").get("max")} KmHr <br>
+                Min: ${station.getMinMax("windSpeed").get("min")} KmHr
+            </p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="ui inverted segment">
+            <i class="right floated huge orange stroopwafel icon"></i>
+            <h2>
+                Pressure
+            </h2>
+            <p>
+                ${station.getLastReading().windPressure} hpa <br>
+                Max: ${station.getMinMax("windPressure").get("max")} KmHr <br>
+                Min: ${station.getMinMax("windPressure").get("min")} KmHr
+            </p>
         </div>
     </div>
 </div>
 #{/list}
+
+
+<script>
+    //First Javascript my guy
+    //Move into class
+    //refactor
+    //change weather code in Instrument YAML so we can get the code / icon from there
+    var weatherCode;
+    var icon;
+    weatherCode = "${station.getLastReading().getWeatherCode()}";
+
+    if (weatherCode === 100){
+        icon = "right floated huge red sun icon";
+    }
+    if (weatherCode === "Partial Clouds"){
+        icon = "right floated huge red cloud sun icon";
+    }
+    if (weatherCode === 300){
+        icon = "right floated huge red cloud icon";
+    }
+    if (weatherCode === 400){
+        icon = "right floated huge red cloud sun rain icon";
+    }
+    if (weatherCode === "Rain"){
+        icon = "right floated huge red cloud showers heavy icon";
+    }
+    if (weatherCode === 600){
+        icon = "right floated huge red cloud showers heavy icon";
+    }
+    if (weatherCode === 700){
+        icon = "right floated huge red snowflake icon";
+    }
+    document.getElementById("weatherIcon").setAttribute("class",icon);
+</script>

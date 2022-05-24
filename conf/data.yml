@@ -45,8 +45,16 @@ Station(s2):
 Member(m1):
   email: homer@simpson.com
   password: secret
-  firstname: Homer
-  lastname: Simpson
+  firstName: Homer
+  lastName: Simpson
   stations:
     - s1
     - s2
+
+Member(m3):
+  email: max@hornby.com
+  password: admin
+  firstName: Max
+  lastName: Hornby
+  stations:
+

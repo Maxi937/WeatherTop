@@ -2,9 +2,9 @@ package models;
 
 import javax.persistence.Entity;
 import play.db.jpa.Model;
-import WeatherInstrument.Anemometer;
-import WeatherInstrument.Compass;
-import WeatherInstrument.Thermometer;
+import weathertop.weather.instrument.Anemometer;
+import weathertop.weather.instrument.Compass;
+import weathertop.weather.instrument.Thermometer;
 
 import java.util.HashMap;
 
@@ -50,9 +50,9 @@ public class Reading extends Model
     //When this function was named "getWindDirection()", the returned value overwrote all windDirection variables?
     /* This Function is Evil - After restructuring code into separate instrument classes I renamed the function getWindDirection() -
     A call to getWindDirection would cause StackOverflow Error - see Notes */
-    public String getCompassDirection(){
+    public String getCompassWindDirection(){
         Compass compass = new Compass();
-        return compass.getWindDirection(this);
+        return compass.getCompassWindDirection(this);
     }
 
     public HashMap<String, String> getReadingAsHashMap(){

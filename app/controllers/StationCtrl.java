@@ -11,9 +11,7 @@ public class StationCtrl extends Controller
     {
         Station station = Station.findById(id);
         Logger.info ("Station id = " + id);
-
         render("station.html",station);
-
     }
 
     public static void addReading(Long id, int code, float temperature, float windSpeed, int windPressure, float windDirection)

@@ -11,6 +11,8 @@ import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
 
+
+//TODO: Refactor MinMax value, Should have a function for Min and a function for Max - all Min Max should do is hit them functions and make the result a hash map
 @Entity
 public class Station extends Model
 {
@@ -65,9 +67,9 @@ public class Station extends Model
             if (max <= Float.parseFloat(readingAsHashMap.get(readingToMinMax))){
                 max = Float.parseFloat(readingAsHashMap.get(readingToMinMax));
             }
-            System.out.println(readingAsHashMap);
+            //System.out.println(readingAsHashMap);
         }
-        System.out.println("Max "+ readingToMinMax +": " + max);
+        //System.out.println("Max "+ readingToMinMax +": " + max);
 
         min = getMin(max, readingToMinMax);
 
@@ -88,9 +90,9 @@ public class Station extends Model
             if (Float.parseFloat(readingAsHashMap.get(readingToMin)) <= minTemp){
                 minTemp = Float.parseFloat(readingAsHashMap.get(readingToMin));
             }
-            System.out.println(readingAsHashMap);
+            //System.out.println(readingAsHashMap);
         }
-        System.out.println("Min "+ readingToMin + ": " + minTemp);
+        //System.out.println("Min "+ readingToMin + ": " + minTemp);
         return minTemp;
     }
 
@@ -105,11 +107,10 @@ public class Station extends Model
             if (maxTemp <= Float.parseFloat(readingAsHashMap.get("Temp"))){
                 maxTemp = Float.parseFloat(readingAsHashMap.get("Temp"));
             }
-            System.out.println(readingAsHashMap);
+            //System.out.println(readingAsHashMap);
         }
-        System.out.println("Max Temperature: " + maxTemp);
+        //System.out.println("Max Temperature: " + maxTemp);
         return maxTemp;
     }
-
 
 }
