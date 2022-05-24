@@ -1,11 +1,10 @@
-package utils;
+package WeatherInstrument;
 
 import models.Reading;
 
-public class Thermometer {
+public class Thermometer extends WeatherInstrument {
 
     public Thermometer(){
-
     }
 
     public float getCelsiusToFahrenheit(Reading reading){

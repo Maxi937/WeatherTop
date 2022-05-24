@@ -1,24 +1,21 @@
-package utils;
+package WeatherInstrument;
 
 import models.Reading;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 /* TODO: Refactor getBeaufortWindSpeed - Make it an array list of Hash Maps like how the wind direction is done */
-public class Anemometer {
-    private final Map<String, Object> anemometerData;
+public class Anemometer extends WeatherInstrument{
 
     public Anemometer(){
-        this.anemometerData = InstrumentUtil.getData();
     }
 
     public String getWeatherCode(Reading reading){
         String weatherCode;
         HashMap<Integer, String> weatherCodeData;
 
-        weatherCodeData = (HashMap<Integer, String>) this.anemometerData.get("weather");
+        weatherCodeData = (HashMap<Integer, String>) weatherInstrumentData.get("weather");
         weatherCode = weatherCodeData.get(reading.code);
 
         return weatherCode;
@@ -26,7 +23,7 @@ public class Anemometer {
 
     public Integer getBeaufortWindSpeed(Reading reading){
         LinkedHashMap<Integer, String> beaufortScaleData;
-        beaufortScaleData = (LinkedHashMap<Integer, String>) this.anemometerData.get("beaufortScale");
+        beaufortScaleData = (LinkedHashMap<Integer, String>) weatherInstrumentData.get("beaufortScale");
 
         int index = 0;
         for (Integer i : beaufortScaleData.keySet()) {

@@ -2,11 +2,10 @@ package models;
 
 import javax.persistence.Entity;
 import play.db.jpa.Model;
-import utils.Anemometer;
-import utils.Compass;
-import utils.Thermometer;
+import WeatherInstrument.Anemometer;
+import WeatherInstrument.Compass;
+import WeatherInstrument.Thermometer;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 @Entity
