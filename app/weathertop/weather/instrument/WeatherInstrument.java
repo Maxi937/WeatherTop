@@ -20,7 +20,7 @@ public class WeatherInstrument {
                 .getClassLoader()
                 .getResourceAsStream(instrumentDataFileName);
         weatherInstrumentData = (Map<String, Object>) yaml.load(inputStream);
-        Logger.info ("Instrument Data Loaded Successfully ");
+        //Logger.info ("Instrument Data Loaded Successfully ");
         return weatherInstrumentData;
     }
 

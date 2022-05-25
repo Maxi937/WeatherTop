@@ -16,6 +16,8 @@
 
 3. https://www.baeldung.com/java-snake-yaml
    - info on SnakeYaml
-   - 
+
+4. https://www.tutorialspoint.com/java/java_date_time.htm
+   - was unable to read date from YAML as long, used Date class.
 
 
