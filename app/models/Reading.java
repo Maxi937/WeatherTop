@@ -42,13 +42,18 @@ public class Reading extends Model
         return anemometer.getWeatherCode(this);
     }
 
-    public Integer getBeaufortWindSpeed(){
+    public Integer getBeaufortScale(){
         Anemometer anemometer = new Anemometer();
-        return anemometer.getBeaufortWindSpeed(this);
+        return anemometer.getBeaufortScale(this);
+    }
+
+    public String getWeatherCodeIcon(Reading reading){
+        Anemometer anemometer = new Anemometer();
+        return anemometer.getWeatherCodeIcon(this);
     }
 
     //When this function was named "getWindDirection()", the returned value overwrote all windDirection variables?
-    /* This Function is Evil - After restructuring code into separate instrument classes I renamed the function getWindDirection() -
+    /* After restructuring code into separate instrument classes I renamed the function getWindDirection() -
     A call to getWindDirection would cause StackOverflow Error - see Notes */
     public String getCompassWindDirection(){
         Compass compass = new Compass();

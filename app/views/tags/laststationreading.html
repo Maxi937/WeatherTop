@@ -18,7 +18,7 @@
 
     <div class="card">
         <div class="ui inverted segment">
-            <i class="nada"id="weatherIcon"></i>
+            <i class="nada" id="weatherIcon"></i>
             <h2>
                 Weather
             </h2>
@@ -52,7 +52,7 @@
                 Wind
             </h2>
             <p>
-                ${station.getLastReading().getBeaufortWindSpeed()} bft <br>
+                ${station.getLastReading().getBeaufortScale()} bft <br>
                 ${station.getLastReading().getCompassWindDirection()}<br>
                 Feels like <br>
                 ${station.getLastReading().getWindChill().format("0.00")} <br>
@@ -78,36 +78,6 @@
 </div>
 #{/list}
 
-
 <script>
-    //First Javascript my guy
-    //Move into class
-    //refactor
-    //change weather code in Instrument YAML so we can get the code / icon from there
-    var weatherCode;
-    var icon;
-    weatherCode = "${station.getLastReading().getWeatherCode()}";
-
-    if (weatherCode === 100){
-        icon = "right floated huge red sun icon";
-    }
-    if (weatherCode === "Partial Clouds"){
-        icon = "right floated huge red cloud sun icon";
-    }
-    if (weatherCode === 300){
-        icon = "right floated huge red cloud icon";
-    }
-    if (weatherCode === 400){
-        icon = "right floated huge red cloud sun rain icon";
-    }
-    if (weatherCode === "Rain"){
-        icon = "right floated huge red cloud showers heavy icon";
-    }
-    if (weatherCode === 600){
-        icon = "right floated huge red cloud showers heavy icon";
-    }
-    if (weatherCode === 700){
-        icon = "right floated huge red snowflake icon";
-    }
-    document.getElementById("weatherIcon").setAttribute("class",icon);
+    document.getElementById("weatherIcon").setAttribute("class","${station.getLastReading().getWeatherCodeIcon()}");
 </script>

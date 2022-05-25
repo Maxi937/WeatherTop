@@ -1,26 +1,96 @@
 weather:
- 100: Clear
- 200: Partial Clouds
- 300: Cloudy
- 400: Light Showers
- 500: Heavy Showers
- 600: Rain
- 700: Snow
- 800: Thunder
+  - code: "100"
+  - weather: Clear
+  - icon: right floated huge red sun icon
+
+  - code: "200"
+  - weather: Partial Clouds
+  - icon: right floated huge red cloud sun icon
+
+  - code: "300"
+  - weather: Cloudy
+  - icon: right floated huge red cloud icon
+
+  - code: "400"
+  - weather: Light Showers
+  - icon: right floated huge red cloud sun rain icon
+
+  - code: "500"
+  - weather: Heavy Showers
+  - icon: right floated huge red cloud showers heavy icon
+
+  - code: "600"
+  - weather: Rain
+  - icon: right floated huge red cloud rain icon
+
+  - code: "700"
+  - weather: Snow
+  - icon: right floated huge red snowflake icon
+
+  - code: "800"
+  - weather: Thunder
+  - icon: right floated huge red bolt icon
 
 beaufortScale:
- 1: Calm
- 5: Light Air
- 11: Light Breeze
- 19: Gentle Breeze
- 28: Moderate Breeze
- 38: Fresh Breeze
- 49: Strong Breeze
- 61: Near Gale
- 74: Gale
- 88: Severe Gale
- 102: Strong Storm
- 117: Violent Storm
+  - beaufort: 0
+    label: Calm
+    min: 1
+    max: 1
+
+  - beaufort: 1
+    label: Light Air
+    min: 1
+    max: 5
+
+  - beaufort: 2
+    label: Light Breeze
+    min: 6
+    max: 11
+
+  - beaufort: 3
+    label: Gentle Breeze
+    min: 12
+    max: 19
+
+  - beaufort: 4
+    label: Moderate Breeze
+    min: 20
+    max: 28
+
+  - beaufort: 5
+    label: Fresh Breeze
+    min: 29
+    max: 38
+
+  - beaufort: 6
+    label: Strong Breeze
+    min: 39
+    max: 49
+
+  - beaufort: 7
+    label: Near Gale
+    min: 50
+    max: 61
+
+  - beaufort: 8
+    label: Gale
+    min: 62
+    max: 74
+
+  - beaufort: 9
+    label: Severe Gale
+    min: 75
+    max: 88
+
+  - beaufort: 10
+    label: Strong Storm
+    min: 89
+    max: 102
+
+  - beaufort: 11
+    label: Violent Storm
+    min: 103
+    max: 117
 
 compass:
  - min: "348.75"

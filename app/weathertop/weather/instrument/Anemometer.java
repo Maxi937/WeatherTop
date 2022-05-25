@@ -2,41 +2,76 @@ package weathertop.weather.instrument;
 
 import models.Reading;
 
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 
-/* TODO: Refactor getBeaufortWindSpeed - Make it an array list of Hash Maps like how the wind direction is done */
-public class Anemometer extends WeatherInstrument{
 
-    HashMap<Integer, String> weatherCodeData;
-    LinkedHashMap<Integer, String> beaufortScaleData;
+public class Anemometer extends WeatherInstrument {
 
-    public Anemometer(){
-        weatherCodeData = (HashMap<Integer, String>) weatherInstrumentData.get("weather");
-        beaufortScaleData = (LinkedHashMap<Integer, String>) weatherInstrumentData.get("beaufortScale");
+    ArrayList<HashMap<String, String>> weatherCodeData;
+    ArrayList<HashMap<String, Integer>> beaufortScaleData;
+
+    public Anemometer() {
+        weatherCodeData = (ArrayList<HashMap<String, String>>) weatherInstrumentData.get("weather");
+        beaufortScaleData = (ArrayList<HashMap<String, Integer>>) weatherInstrumentData.get("beaufortScale");
     }
 
-    public String getWeatherCode(Reading reading){
-        String weatherCode;
-        weatherCode = weatherCodeData.get(reading.code);
-        return weatherCode;
-    }
+    public String getWeatherCode(Reading reading) {
+        String weatherCode = null;
 
-    public Integer getBeaufortWindSpeed(Reading reading){
-        int index = 0;
-        for (Integer i : beaufortScaleData.keySet()) {
+        for (int i = 0; i <= weatherCodeData.size() - 1; i++) {
+            HashMap<String, String> dataMap;
+            dataMap = weatherCodeData.get(i);
 
-            if (reading.windSpeed <= i) {
-                int maxSpeed;
-                maxSpeed = i - 1;
-                if(reading.windSpeed <= maxSpeed){
-                    return index;
-                }
-                return index;
+            if (dataMap.containsKey("code")) {
+                weatherCode = dataMap.get("code");
             }
-            index++;
+            if (dataMap.containsKey("weather") && Integer.parseInt(weatherCode) == reading.code){
+                return dataMap.get("weather");
+            }
         }
-        return index;
+        return null;
+    }
+
+    public String getWeatherCodeIcon(Reading reading) {
+        String weatherCode = null;
+
+        for (int i = 0; i <= weatherCodeData.size() - 1; i++) {
+            HashMap<String, String> dataMap;
+            dataMap = weatherCodeData.get(i);
+
+            if (dataMap.containsKey("code")) {
+                weatherCode = dataMap.get("code");
+            }
+            if (dataMap.containsKey("icon") && Integer.parseInt(weatherCode) == reading.code){
+                return dataMap.get("icon");
+            }
+        }
+        return null;
+    }
+
+    public Integer getBeaufortScale(Reading reading) {
+        int min = 0;
+        int max = 0;
+        HashMap<String, Integer> dataMap = new HashMap<>();
+
+
+        for (int i = 0; i <= beaufortScaleData.size() - 1; i++) {
+            dataMap = beaufortScaleData.get(i);
+
+            if (dataMap.containsKey("min")) {
+                min = dataMap.get("min");
+            }
+
+            if (dataMap.containsKey("max")) {
+                max = dataMap.get("max");
+            }
+
+            if (reading.windSpeed >= min && reading.windSpeed <= max) {
+                return dataMap.get("beaufort");
+            }
+        }
+        return dataMap.get("beaufort");
     }
 
 }
