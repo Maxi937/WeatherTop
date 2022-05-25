@@ -18,7 +18,7 @@
 
     <div class="card">
         <div class="ui inverted segment">
-            <i class="nada" id="weatherIcon"></i>
+            <i class="${station.getLastReading().getWeatherCodeIcon()}" id="weatherIcon"></i>
             <h2>
                 Weather
             </h2>
@@ -78,6 +78,3 @@
 </div>
 #{/list}
 
-<script>
-    document.getElementById("weatherIcon").setAttribute("class","${station.getLastReading().getWeatherCodeIcon()}");
-</script>

@@ -6,15 +6,16 @@
 #{menu id:"dashboard"/}
 
 <section class="ui segment">
-  <h2 class="ui header">
-
-  </h2>
   <!-- Will check if there are actually readings in the station before trying to display latest
   readings and list of readings > Catch new Stations -->
+
   #{if station.readings.size() > 0}
+  <section class="ui vertical segment">
     #{laststationreading station:station/}
+  </section>
     #{listreadings station:station/}
   #{/if}
+
 
   #{addreading station:station/}
 </section>

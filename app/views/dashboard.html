@@ -4,18 +4,23 @@
 #{menu id:"dashboard"/}
 
 #{list items:stations, as:'station'}
+
 <section class="ui segment">
-  <h2 class="ui header">
-    ${station.name}
-  </h2>
+    <section class="ui vertical segment">
+        #{if station.readings.size() > 0}
+        #{laststationreading station:station/}
+        #{/if}
+    </section>
 
-  <a href="/station/${station.id}">
-      <i class="bordered grey large link folder icon"></i>
-  </a>
+    <section class="ui vertical segment">
+        <a href="/station/${station.id}">
+            <i class="bordered grey large link folder icon"></i>
+        </a>
 
-  <a href="#">
-    <i class="bordered grey large link trash icon"></i>
-  </a>
+        <a href="#">
+            <i class="bordered grey large link trash icon"></i>
+        </a>
+    </section>
 </section>
 #{/list}
 
