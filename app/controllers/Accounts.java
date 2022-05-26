@@ -16,7 +16,6 @@ public class Accounts extends Controller
         render("member.html",member, anemometer);
     }
 
-
     public static void signup()
     {
         render("signup.html");
@@ -70,10 +69,4 @@ public class Accounts extends Controller
         return member;
     }
 
-    public static void editDetails(Long id, String firstname, String lastname, String email, String password) {
-        Member member = null;
-        member = Member.findById(id);
-        member.save();
-        redirect("/");
-    }
 }

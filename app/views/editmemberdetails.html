@@ -1,0 +1,26 @@
+#{extends 'main.html' /}
+#{set 'title'}
+${member.firstName} ${member.lastName}
+#{/set}
+#{menu id:"member"/}
+
+
+<form class="ui segment form" action="/editmemberdetails/member" method="POST">
+        <div class="field">
+            <label>First Name</label>
+            <input placeholder="${member.firstName}" type="text" name="firstName">
+        </div>
+
+        <div class="field">
+            <label>Surname</label>
+            <input placeholder="${member.lastName}" type="text" name="lastName">
+        </div>
+
+        <div class="field">
+            <label>Email</label>
+            <input placeholder="${member.email}" type="text" name="email">
+        </div>
+
+
+    <button class="ui blue submit button">Save</button>
+</form>

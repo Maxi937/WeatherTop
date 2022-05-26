@@ -31,16 +31,16 @@ ${member.firstName} ${member.lastName}
 
 
         <div class="column">
-
-                #{list items:member, as:'member'}
-                    #{listmemberreadings member:member, anemometer:anemometer/}
-                #{/list}
-
+            #{list items:member, as:'member'}
+            #{listmemberreadings member:member, anemometer:anemometer/}
+            #{/list}
         </div>
     </div>
 
     <div class="ui segment">
-        <button class="ui blue submit button">Edit Details</button>
+        <a href="/editmemberdetails">
+            <button class="ui blue submit button">Edit Details</button>
+        </a>
     </div>
 </div>
 
