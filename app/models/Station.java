@@ -1,27 +1,29 @@
 package models;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import java.util.Date;
 
 import play.db.jpa.Model;
 
 
 //TODO: Refactor MinMax value, Should have a function for Min and a function for Max - all Min Max should do is hit them functions and make the result a hash map
 @Entity
-public class Station extends Model
-{
+public class Station extends Model {
     public String name;
     public float latitude;
     public float longitude;
 
     @OneToMany(cascade = CascadeType.ALL)
-    public List<Reading> readings = new ArrayList<Reading>();
+    public List<Reading> readings = new ArrayList<>();
 
 
     public Station(String name, float latitude, float longitude) {
@@ -30,17 +32,17 @@ public class Station extends Model
         this.longitude = longitude;
     }
 
-    public Reading getLastReading(){
+    public Reading getLastReading() {
         Reading lastReading = null;
 
-        if (this.readings.size()>0) {
-            lastReading = readings.get(readings.size()-1);
+        if (this.readings.size() > 0) {
+            lastReading = readings.get(readings.size() - 1);
         }
 
         return lastReading;
     }
 
-    public Reading getReading(int indexToGet){
+    public Reading getReading(int indexToGet) {
         return this.readings.get(indexToGet);
     }
 
@@ -54,17 +56,17 @@ public class Station extends Model
        MinMax
        Result as HashMap - Min : Max
      */
-    public HashMap<String, Float> getMinMax(String readingToMinMax){
+    public HashMap<String, Float> getMinMax(String readingToMinMax) {
         HashMap<String, String> readingAsHashMap;
         HashMap<String, Float> result = new HashMap<>();
 
         float max = 0;
         float min;
 
-        for (int i = 0; i < this.readings.size(); i++){
+        for (int i = 0; i < this.readings.size(); i++) {
             readingAsHashMap = readings.get(i).getReadingAsHashMap();
 
-            if (max <= Float.parseFloat(readingAsHashMap.get(readingToMinMax))){
+            if (max <= Float.parseFloat(readingAsHashMap.get(readingToMinMax))) {
                 max = Float.parseFloat(readingAsHashMap.get(readingToMinMax));
             }
             //System.out.println(readingAsHashMap);
@@ -80,14 +82,14 @@ public class Station extends Model
     }
 
     // Min by starting at the Max value and decrementing through each temp, updating new Min if < current Min
-    public float getMin(float max, String readingToMin){
+    public float getMin(float max, String readingToMin) {
         HashMap<String, String> readingAsHashMap;
         float minTemp = max;
 
-        for (int i = this.readings.size()-1; i >= 0; i--){
+        for (int i = this.readings.size() - 1; i >= 0; i--) {
             readingAsHashMap = readings.get(i).getReadingAsHashMap();
 
-            if (Float.parseFloat(readingAsHashMap.get(readingToMin)) <= minTemp){
+            if (Float.parseFloat(readingAsHashMap.get(readingToMin)) <= minTemp) {
                 minTemp = Float.parseFloat(readingAsHashMap.get(readingToMin));
             }
             //System.out.println(readingAsHashMap);
@@ -96,15 +98,15 @@ public class Station extends Model
         return minTemp;
     }
 
-    public float getMax(){
+    public float getMax() {
         HashMap<String, String> readingAsHashMap;
         float maxTemp = 0;
         float minTemp;
 
-        for (int i = 0; i < this.readings.size(); i++){
+        for (int i = 0; i < this.readings.size(); i++) {
             readingAsHashMap = readings.get(i).getReadingAsHashMap();
 
-            if (maxTemp <= Float.parseFloat(readingAsHashMap.get("Temp"))){
+            if (maxTemp <= Float.parseFloat(readingAsHashMap.get("Temp"))) {
                 maxTemp = Float.parseFloat(readingAsHashMap.get("Temp"));
             }
             //System.out.println(readingAsHashMap);
@@ -113,4 +115,27 @@ public class Station extends Model
         return maxTemp;
     }
 
+    public String getTrendAnalysis(String readingToTrendAnalysis) {
+        ArrayList<Float> resultsList = new ArrayList<>();
+        int x = 0;
+
+        if (this.readings.size() >= 3) {
+            for (int i = this.readings.size() - 3; i <= this.readings.size() - 1; i++) {
+                HashMap<String, String> readingAsHashMap = readings.get(i).getReadingAsHashMap();
+                resultsList.add(x, Float.valueOf(readingAsHashMap.get(readingToTrendAnalysis)));
+                x++;
+            }
+
+            System.out.println(resultsList);
+
+            if (resultsList.get(1) > resultsList.get(0) && resultsList.get(1) < resultsList.get(2)) {
+                return "arrow up icon";
+            }
+
+            if (resultsList.get(1) < resultsList.get(0) && resultsList.get(1) > resultsList.get(2)) {
+                return "arrow down icon";
+            }
+        }
+        return "No Trend";
+    }
 }

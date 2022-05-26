@@ -2,13 +2,13 @@ package models;
 
 import javax.persistence.Entity;
 
-import play.Logger;
 import play.db.jpa.Model;
 import weathertop.weather.instrument.Anemometer;
 import weathertop.weather.instrument.Compass;
 import weathertop.weather.instrument.Thermometer;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 

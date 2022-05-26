@@ -23,6 +23,11 @@ public class Compass extends WeatherInstrument {
             if (reading.windDirection >= compassDegreeMin && reading.windDirection <= compassDegreeMax) {
                 return compassDirection;
             }
+
+            //catch for last case - North is between 348.15 - 11.15
+            if(reading.windDirection >= 348.75 || reading.windDirection <= 11.25 ){
+                return compassDataMap.get("direction");
+            }
         }
         return null;
     }
