@@ -2,11 +2,12 @@
     <thead>
     <tr>
         <th>Date</th>
-        <th>Code</th>
-        <th>Temp</th>
-        <th>Wind Speed</th>
-        <th>Wind Direction</th>
-        <th>Wind Pressure</th>
+        <th class="center aligned">Code</th>
+        <th class="center aligned">Temp</th>
+        <th class="center aligned">Wind Speed</th>
+        <th class="center aligned">Wind Direction</th>
+        <th class="center aligned">Wind Pressure</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -15,20 +16,25 @@
         <td>
             ${reading.getDate()}
         </td>
-        <td>
+        <td class="center aligned">
             ${reading.code}
         </td>
-        <td>
+        <td class="center aligned">
             ${reading.temperature}
         </td>
-        <td>
+        <td class="center aligned">
             ${reading.windSpeed}
         </td>
-        <td>
+        <td class="center aligned">
             ${reading.windDirection}
         </td>
-        <td>
+        <td class="center aligned">
             ${reading.windPressure}
+        </td>
+        <td class="center aligned">
+            <a href="/station/${_station.id}/deletereading/${reading.id}">
+                <i class="bordered grey large link trash icon"></i>
+            </a>
         </td>
     </tr>
     #{/list}
