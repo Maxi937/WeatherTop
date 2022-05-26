@@ -29,6 +29,11 @@ public class Dashboard extends Controller
 
   public static void addStation (String name, float latitude, float longitude)
   {
+    if (name == null || latitude == 0 || longitude == 0){
+      Logger.info("All fields not completed");
+      redirect("/dashboard");
+    }
+
     Member member = Accounts.getLoggedInMember();
     Station station = new Station (name, latitude, longitude);
     member.stations.add(station);

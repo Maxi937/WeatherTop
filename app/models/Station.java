@@ -120,7 +120,7 @@ public class Station extends Model {
                 x++;
             }
 
-            System.out.println(resultsList);
+            //System.out.println(resultsList);
 
             if (resultsList.get(1) > resultsList.get(0) && resultsList.get(1) < resultsList.get(2)) {
                 return "arrow up icon";

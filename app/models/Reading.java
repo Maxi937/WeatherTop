@@ -7,6 +7,7 @@ import weathertop.weather.instrument.Anemometer;
 import weathertop.weather.instrument.Compass;
 import weathertop.weather.instrument.Thermometer;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -43,6 +44,16 @@ public class Reading extends Model
         readingAsHashMap.put("windPressure", String.valueOf(this.windPressure));
         readingAsHashMap.put("Temp", String.valueOf(this.temperature));
         return readingAsHashMap;
+    }
+
+    public ArrayList<String> getReadingAsList(){
+        ArrayList<String> readingAsList = new ArrayList<>();
+        readingAsList.add(String.valueOf(this.code));
+        readingAsList.add(String.valueOf(this.windSpeed));
+        readingAsList.add(String.valueOf(this.windDirection));
+        readingAsList.add(String.valueOf(this.windPressure));
+        readingAsList.add(String.valueOf(this.temperature));
+        return readingAsList;
     }
 }
 

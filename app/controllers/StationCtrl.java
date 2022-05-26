@@ -13,27 +13,31 @@ import java.sql.Time;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class StationCtrl extends Controller
-{
-    public static void index(Long id)
-    {
+public class StationCtrl extends Controller {
+    public static void index(Long id) {
         Station station = Station.findById(id);
-        Logger.info ("Station id = " + id);
+        Logger.info("Station id = " + id);
 
         Thermometer thermometer = new Thermometer();
         Anemometer anemometer = new Anemometer();
         Compass compass = new Compass();
 
-        render("station.html",station, thermometer, anemometer, compass);
+        render("station.html", station, thermometer, anemometer, compass);
     }
 
-    public static void addReading(Long id, int code, float temperature, float windSpeed, int windPressure, float windDirection)
-    {
-        Date date = new Date();
-        Reading reading = new Reading(date, code, temperature, windSpeed, windPressure, windDirection);
-        Station station = Station.findById(id);
-        station.readings.add(reading);
-        station.save();
-        redirect ("/station/" + id);
-    }
+    public static void addReading(Long id, int code, float temperature, float windSpeed, int windPressure, float windDirection) {
+
+           if (code == 0 || temperature == 0 || windSpeed == 0 || windPressure == 0) {
+               Logger.info("All fields not completed");
+               redirect("/station/" + id);
+           }
+
+           Date date = new Date();
+           Reading reading = new Reading(date, code, temperature, windSpeed, windPressure, windDirection);
+           Station station = Station.findById(id);
+           station.readings.add(reading);
+           station.save();
+           redirect("/station/" + id);
+       }
+
 }
