@@ -1,0 +1,46 @@
+#{extends 'main.html' /}
+#{set 'title'}
+${member.firstName} ${member.lastName}
+#{/set}
+#{menu id:"member"/}
+
+<div class="ui segment">
+    <div class="ui two column grid">
+        <div class="column">
+            <div class="ui segment">
+                <div class="ui top attached blue label">First Name</div>
+                <p>
+                    ${member.firstName}
+                </p>
+            </div>
+
+            <div class="ui segment">
+                <div class="ui top attached blue label">Surname</div>
+                <p>
+                    ${member.lastName}
+                </p>
+            </div>
+
+            <div class="ui segment">
+                <div class="ui top attached blue label">Email</div>
+                <p>
+                    ${member.email}
+                </p>
+            </div>
+        </div>
+
+
+        <div class="column">
+
+                #{list items:member, as:'member'}
+                    #{listmemberreadings member:member, anemometer:anemometer/}
+                #{/list}
+
+        </div>
+    </div>
+
+    <div class="ui segment">
+        <button class="ui blue submit button">Edit Details</button>
+    </div>
+</div>
+

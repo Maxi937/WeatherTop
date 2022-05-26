@@ -7,8 +7,6 @@ import weathertop.weather.instrument.Anemometer;
 import weathertop.weather.instrument.Compass;
 import weathertop.weather.instrument.Thermometer;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -35,39 +33,6 @@ public class Reading extends Model
 
     public String getDate(){
         return  String.format("%tF %<tT", date);
-    }
-
-    public float getCelsiusToFahrenheit(){
-        Thermometer thermometer = new Thermometer();
-        return thermometer.getCelsiusToFahrenheit(this);
-    }
-
-    public double getWindChill(){
-        Thermometer thermometer = new Thermometer();
-        return thermometer.getWindChill(this);
-    }
-
-    public String getWeatherCode(){
-        Anemometer anemometer = new Anemometer();
-        return anemometer.getWeatherCode(this);
-    }
-
-    public Integer getBeaufortScale(){
-        Anemometer anemometer = new Anemometer();
-        return anemometer.getBeaufortScale(this);
-    }
-
-    public String getWeatherCodeIcon(Reading reading){
-        Anemometer anemometer = new Anemometer();
-        return anemometer.getWeatherCodeIcon(this);
-    }
-
-    //When this function was named "getWindDirection()", the returned value overwrote all windDirection variables?
-    /* After restructuring code into separate instrument classes I renamed the function getWindDirection() -
-    A call to getWindDirection would cause StackOverflow Error - see Notes */
-    public String getCompassWindDirection(){
-        Compass compass = new Compass();
-        return compass.getCompassWindDirection(this);
     }
 
     public HashMap<String, String> getReadingAsHashMap(){

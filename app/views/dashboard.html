@@ -8,7 +8,10 @@
 <section class="ui segment">
     <section class="ui vertical segment">
         #{if station.readings.size() > 0}
-        #{laststationreading station:station/}
+            #{laststationreading station:station,
+                thermometer:thermometer,
+                anemometer:anemometer,
+                compass:compass /}
         #{/if}
     </section>
 

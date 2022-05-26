@@ -3,9 +3,20 @@ package controllers;
 import models.Member;
 import play.Logger;
 import play.mvc.Controller;
+import weathertop.weather.instrument.Anemometer;
 
 public class Accounts extends Controller
 {
+    public static void index()
+    {
+        Member member = Accounts.getLoggedInMember();
+        Logger.info("rendering member.html");
+        Logger.info("Member ID: "+ member);
+        Anemometer anemometer = new Anemometer();
+        render("member.html",member, anemometer);
+    }
+
+
     public static void signup()
     {
         render("signup.html");
@@ -16,7 +27,7 @@ public class Accounts extends Controller
         render("login.html");
     }
 
-    public static void register(String firstname, String lastname, String email, String password)
+    public static void register(Long id, String firstname, String lastname, String email, String password)
     {
         Logger.info("Registering new user " + email);
         Member member = new Member(firstname, lastname, email, password);
@@ -57,5 +68,12 @@ public class Accounts extends Controller
             login();
         }
         return member;
+    }
+
+    public static void editDetails(Long id, String firstname, String lastname, String email, String password) {
+        Member member = null;
+        member = Member.findById(id);
+        member.save();
+        redirect("/");
     }
 }

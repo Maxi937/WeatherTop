@@ -7,6 +7,7 @@ public class Thermometer extends WeatherInstrument {
     public Thermometer(){
     }
 
+
     public float getCelsiusToFahrenheit(Reading reading){
         return reading.temperature * 9/5 + 32;
     }

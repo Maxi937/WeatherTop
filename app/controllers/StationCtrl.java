@@ -4,6 +4,10 @@ import models.Reading;
 import models.Station;
 import play.Logger;
 import play.mvc.Controller;
+import weathertop.weather.instrument.Anemometer;
+import weathertop.weather.instrument.Compass;
+import weathertop.weather.instrument.Thermometer;
+import weathertop.weather.instrument.WeatherInstrument;
 
 import java.sql.Time;
 import java.time.LocalDateTime;
@@ -15,7 +19,12 @@ public class StationCtrl extends Controller
     {
         Station station = Station.findById(id);
         Logger.info ("Station id = " + id);
-        render("station.html",station);
+
+        Thermometer thermometer = new Thermometer();
+        Anemometer anemometer = new Anemometer();
+        Compass compass = new Compass();
+
+        render("station.html",station, thermometer, anemometer, compass);
     }
 
     public static void addReading(Long id, int code, float temperature, float windSpeed, int windPressure, float windDirection)

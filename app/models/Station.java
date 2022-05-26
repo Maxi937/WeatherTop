@@ -63,18 +63,15 @@ public class Station extends Model {
         float max = 0;
         float min;
 
-        for (int i = 0; i < this.readings.size(); i++) {
-            readingAsHashMap = readings.get(i).getReadingAsHashMap();
+        for (Reading reading : this.readings) {
+            readingAsHashMap = reading.getReadingAsHashMap();
 
             if (max <= Float.parseFloat(readingAsHashMap.get(readingToMinMax))) {
                 max = Float.parseFloat(readingAsHashMap.get(readingToMinMax));
             }
-            //System.out.println(readingAsHashMap);
         }
-        //System.out.println("Max "+ readingToMinMax +": " + max);
 
         min = getMin(max, readingToMinMax);
-
         result.put("min", min);
         result.put("max", max);
 
@@ -101,8 +98,8 @@ public class Station extends Model {
         HashMap<String, String> readingAsHashMap;
         float maxTemp = 0;
 
-        for (int i = 0; i < this.readings.size(); i++) {
-            readingAsHashMap = readings.get(i).getReadingAsHashMap();
+        for (Reading reading : this.readings) {
+            readingAsHashMap = reading.getReadingAsHashMap();
 
             if (maxTemp <= Float.parseFloat(readingAsHashMap.get("Temp"))) {
                 maxTemp = Float.parseFloat(readingAsHashMap.get("Temp"));
@@ -111,6 +108,7 @@ public class Station extends Model {
         return maxTemp;
     }
 
+    //TODO: Be Smarter
     public String getTrendAnalysis(String readingToTrendAnalysis) {
         ArrayList<Float> resultsList = new ArrayList<>();
         int x = 0;
@@ -132,6 +130,6 @@ public class Station extends Model {
                 return "arrow down icon";
             }
         }
-        return "No Trend";
+        return null;
     }
 }

@@ -1,5 +1,6 @@
 package weathertop.weather.instrument;
 
+import models.Reading;
 import org.yaml.snakeyaml.Yaml;
 import play.Logger;
 
@@ -23,5 +24,11 @@ public class WeatherInstrument {
         //Logger.info ("Instrument Data Loaded Successfully ");
         return weatherInstrumentData;
     }
+
+    public float getCelsiusToFahrenheit(Reading reading){
+        return 0F;
+    }
+
+
 
 }
