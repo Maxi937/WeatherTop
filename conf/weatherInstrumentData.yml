@@ -1,35 +1,35 @@
 weather:
   - code: "100"
-  - weather: Clear
-  - icon: right floated huge red sun icon
+    weather: Clear
+    icon: red sun icon
 
   - code: "200"
-  - weather: Partial Clouds
-  - icon: right floated huge red cloud sun icon
+    weather: Partial Clouds
+    icon: red cloud sun icon
 
   - code: "300"
-  - weather: Cloudy
-  - icon: right floated huge red cloud icon
+    weather: Cloudy
+    icon: red cloud icon
 
   - code: "400"
-  - weather: Light Showers
-  - icon: right floated huge red cloud sun rain icon
+    weather: Light Showers
+    icon: cloud sun rain icon
 
   - code: "500"
-  - weather: Heavy Showers
-  - icon: right floated huge red cloud showers heavy icon
+    weather: Heavy Showers
+    icon: cloud showers heavy icon
 
   - code: "600"
-  - weather: Rain
-  - icon: right floated huge red cloud rain icon
+    weather: Rain
+    icon: cloud rain icon
 
   - code: "700"
-  - weather: Snow
-  - icon: right floated huge red snowflake icon
+    weather: Snow
+    icon: snowflake icon
 
   - code: "800"
-  - weather: Thunder
-  - icon: right floated huge red bolt icon
+    weather: Thunder
+    icon: bolt icon
 
 beaufortScale:
   - beaufort: 0

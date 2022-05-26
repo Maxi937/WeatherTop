@@ -92,16 +92,14 @@ public class Station extends Model {
             if (Float.parseFloat(readingAsHashMap.get(readingToMin)) <= minTemp) {
                 minTemp = Float.parseFloat(readingAsHashMap.get(readingToMin));
             }
-            //System.out.println(readingAsHashMap);
+
         }
-        //System.out.println("Min "+ readingToMin + ": " + minTemp);
         return minTemp;
     }
 
     public float getMax() {
         HashMap<String, String> readingAsHashMap;
         float maxTemp = 0;
-        float minTemp;
 
         for (int i = 0; i < this.readings.size(); i++) {
             readingAsHashMap = readings.get(i).getReadingAsHashMap();
@@ -109,9 +107,7 @@ public class Station extends Model {
             if (maxTemp <= Float.parseFloat(readingAsHashMap.get("Temp"))) {
                 maxTemp = Float.parseFloat(readingAsHashMap.get("Temp"));
             }
-            //System.out.println(readingAsHashMap);
         }
-        //System.out.println("Max Temperature: " + maxTemp);
         return maxTemp;
     }
 
