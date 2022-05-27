@@ -1,9 +1,13 @@
 package controllers;
 
 import models.Member;
+import models.Reading;
+import models.Station;
 import play.Logger;
 import play.mvc.Controller;
 import weathertop.weather.instrument.Anemometer;
+import weathertop.weather.instrument.Compass;
+import weathertop.weather.instrument.Thermometer;
 
 public class MemberCtrl extends Controller {
 
@@ -41,8 +45,21 @@ public class MemberCtrl extends Controller {
         member.save();
         Logger.info("Editing Member: " + member);
         redirect("/member");
+    }
 
+    public static void deleteReading (Long id, Long readingId)
+    {
+        Logger.info("Deleting a Reading: "+ readingId);
+        Station station = Station.findById(id);
+        Reading reading = Reading.findById(readingId);
+        station.readings.remove(reading);
+        station.save();
+        reading.delete();
 
+        Thermometer thermometer = new Thermometer();
+        Anemometer anemometer = new Anemometer();
+        Compass compass = new Compass();
+        render("station.html", station, thermometer, anemometer, compass);
     }
 
 }

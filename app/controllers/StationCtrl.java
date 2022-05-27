@@ -8,10 +8,7 @@ import play.mvc.Controller;
 import weathertop.weather.instrument.Anemometer;
 import weathertop.weather.instrument.Compass;
 import weathertop.weather.instrument.Thermometer;
-import weathertop.weather.instrument.WeatherInstrument;
 
-import java.sql.Time;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 public class StationCtrl extends Controller {
