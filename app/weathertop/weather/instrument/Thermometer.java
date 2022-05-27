@@ -4,15 +4,15 @@ import models.Reading;
 
 public class Thermometer extends WeatherInstrument {
 
-    public Thermometer(){
+    public Thermometer() {
     }
 
 
-    public float getCelsiusToFahrenheit(Reading reading){
-        return reading.temperature * 9/5 + 32;
+    public float getCelsiusToFahrenheit(Reading reading) {
+        return reading.temperature * 9 / 5 + 32;
     }
 
-    public double getWindChill(Reading reading){
+    public double getWindChill(Reading reading) {
         float temperatureAsCelsius = reading.temperature;
         double v = Math.pow(reading.windSpeed, 0.16);
 

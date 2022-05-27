@@ -11,11 +11,11 @@ public class WeatherInstrument {
 
     protected Map<String, Object> weatherInstrumentData;
 
-    public WeatherInstrument(){
+    public WeatherInstrument() {
         weatherInstrumentData = loadData("weatherInstrumentData.yml");
     }
 
-    private Map<String, Object> loadData(String instrumentDataFileName){
+    private Map<String, Object> loadData(String instrumentDataFileName) {
         Yaml yaml = new Yaml();
         InputStream inputStream = WeatherInstrument.class
                 .getClassLoader()
@@ -25,10 +25,9 @@ public class WeatherInstrument {
         return weatherInstrumentData;
     }
 
-    public float getCelsiusToFahrenheit(Reading reading){
+    public float getCelsiusToFahrenheit(Reading reading) {
         return 0F;
     }
-
 
 
 }

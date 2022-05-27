@@ -47,9 +47,8 @@ public class MemberCtrl extends Controller {
         redirect("/member");
     }
 
-    public static void deleteReading (Long id, Long readingId)
-    {
-        Logger.info("Deleting a Reading: "+ readingId);
+    public static void deleteReading(Long id, Long readingId) {
+        Logger.info("Deleting a Reading: " + readingId);
         Station station = Station.findById(id);
         Reading reading = Reading.findById(readingId);
         station.readings.remove(reading);

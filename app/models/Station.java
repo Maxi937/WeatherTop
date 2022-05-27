@@ -46,6 +46,10 @@ public class Station extends Model {
         return this.readings.get(indexToGet);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
 
     /* Param String: What type of reading to MinMax -
         - "Temp"
@@ -108,7 +112,6 @@ public class Station extends Model {
         return maxTemp;
     }
 
-    //TODO: Be Smarter
     public String getTrendAnalysis(String readingToTrendAnalysis) {
         ArrayList<Float> resultsList = new ArrayList<>();
         int x = 0;
@@ -119,8 +122,6 @@ public class Station extends Model {
                 resultsList.add(x, Float.valueOf(readingAsHashMap.get(readingToTrendAnalysis)));
                 x++;
             }
-
-            //System.out.println(resultsList);
 
             if (resultsList.get(1) > resultsList.get(0) && resultsList.get(1) < resultsList.get(2)) {
                 return "arrow up icon";

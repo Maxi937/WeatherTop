@@ -1,40 +1,40 @@
 <table class="ui fixed table">
-  <thead>
-  <tr>
-    <th class = "four wide">Station</th>
-    <th class = "center aligned">Weather</th>
-    <th class = "center aligned">Temp</th>
-    <th class = "center aligned">Wind</th>
-    <th></th>
-  </tr>
-  </thead>
-  #{list items:_member.stations, as:'stations'}
-  #{if stations.readings.size() > 0}
-  <tbody>
-  <tr>
-    <td>
-      ${stations.name}
-    </td>
-      <td class="center aligned">
-          <i class="big red fitted ${_anemometer.getWeatherCodeIcon(stations.getLastReading())}"></i><br>
-          <span class = "ui tiny text">${_anemometer.getWeatherCode(stations.getLastReading())}</span>
-      </td>
-      <td class="center aligned">
-        <i class="big blue fitted thermometer icon"></i>
-        <br>
-        <span class = "ui tiny text">${stations.getLastReading().temperature} C</span>
-      </td>
-      <td class="center aligned">
-        <i class="big green wind icon"></i> <br>
-        <span class = "ui tiny text">${stations.getLastReading().windSpeed} KmHr</span>
-      </td>
-      <td class="right aligned">
-        <a href="/station/${stations.id}">
-          <i class="bordered grey large link folder icon"></i>
-        </a>
-      </td>
-  </tr>
-  #{/if}
-  </tbody>
-  #{/list}
+    <thead>
+    <tr>
+        <th class="four wide">Station</th>
+        <th class="center aligned">Weather</th>
+        <th class="center aligned">Temp</th>
+        <th class="center aligned">Wind</th>
+        <th></th>
+    </tr>
+    </thead>
+    #{list items:_member.stations, as:'stations'}
+    #{if stations.readings.size() > 0}
+    <tbody>
+    <tr>
+        <td>
+            ${stations.name}
+        </td>
+        <td class="center aligned">
+            <i class="big red fitted ${_anemometer.getWeatherCodeIcon(stations.getLastReading())}"></i><br>
+            <span class="ui tiny text">${_anemometer.getWeatherCode(stations.getLastReading())}</span>
+        </td>
+        <td class="center aligned">
+            <i class="big blue fitted thermometer icon"></i>
+            <br>
+            <span class="ui tiny text">${stations.getLastReading().temperature} C</span>
+        </td>
+        <td class="center aligned">
+            <i class="big green wind icon"></i> <br>
+            <span class="ui tiny text">${stations.getLastReading().windSpeed} KmHr</span>
+        </td>
+        <td class="right aligned">
+            <a href="/station/${stations.id}">
+                <i class="bordered grey large link folder icon"></i>
+            </a>
+        </td>
+    </tr>
+    #{/if}
+    </tbody>
+    #{/list}
 </table>

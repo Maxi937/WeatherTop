@@ -14,7 +14,7 @@ public class Compass extends WeatherInstrument {
         compassData = (ArrayList<HashMap<String, String>>) weatherInstrumentData.get("compass");
     }
 
-    public String getCompassWindDirection(Reading reading){
+    public String getCompassWindDirection(Reading reading) {
         for (HashMap<String, String> compassDataMap : compassData) {
             double compassDegreeMin = Double.parseDouble(compassDataMap.get("min"));
             double compassDegreeMax = Double.parseDouble(compassDataMap.get("max"));
@@ -25,17 +25,12 @@ public class Compass extends WeatherInstrument {
             }
 
             //catch for last case - North is between 348.15 - 11.15
-            if(reading.windDirection >= 348.75 || reading.windDirection <= 11.25 ){
+            if (reading.windDirection >= 348.75 || reading.windDirection <= 11.25) {
                 return compassDataMap.get("direction");
             }
         }
         return null;
     }
-
-
-
-
-
 
 
 }

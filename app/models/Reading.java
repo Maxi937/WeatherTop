@@ -12,8 +12,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 @Entity
-public class Reading extends Model
-{
+public class Reading extends Model {
     public int code;
     public float temperature;
     public float windSpeed;
@@ -22,8 +21,7 @@ public class Reading extends Model
     public Date date;
 
 
-    public Reading(Date date, int code, float temperature, float windSpeed, int windPressure, float windDirection)
-    {
+    public Reading(Date date, int code, float temperature, float windSpeed, int windPressure, float windDirection) {
         this.code = code;
         this.temperature = temperature;
         this.windSpeed = windSpeed;
@@ -32,11 +30,11 @@ public class Reading extends Model
         this.date = date;
     }
 
-    public String getDate(){
-        return  String.format("%tF %<tT", date);
+    public String getDate() {
+        return String.format("%tF %<tT", date);
     }
 
-    public HashMap<String, String> getReadingAsHashMap(){
+    public HashMap<String, String> getReadingAsHashMap() {
         HashMap<String, String> readingAsHashMap = new HashMap<>();
         readingAsHashMap.put("code", String.valueOf(this.code));
         readingAsHashMap.put("windSpeed", String.valueOf(this.windSpeed));
@@ -46,7 +44,7 @@ public class Reading extends Model
         return readingAsHashMap;
     }
 
-    public ArrayList<String> getReadingAsList(){
+    public ArrayList<String> getReadingAsList() {
         ArrayList<String> readingAsList = new ArrayList<>();
         readingAsList.add(String.valueOf(this.code));
         readingAsList.add(String.valueOf(this.windSpeed));

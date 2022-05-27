@@ -1,19 +1,18 @@
 #{extends 'main.html' /}
 #{set 'title'}
-  ${station.name} Weather Station
+${station.name} Weather Station
 #{/set}
-
 #{menu id:"dashboard"/}
 
 <section class="ui segment">
-  <!-- Will check if there are actually readings in the station before trying to display latest
-  readings and list of readings > Catch new Stations -->
-  #{if station.readings.size() > 0}
-  <section class="ui vertical segment">
-    #{laststationreading station:station, thermometer:thermometer, anemometer:anemometer, compass:compass /}
-  </section>
+    <!-- Will check if there are actually readings in the station before trying to display latest
+    readings and list of readings > Catch new Stations -->
+    #{if station.readings.size() > 0}
+    <section class="ui vertical segment">
+        #{laststationreading station:station, thermometer:thermometer, anemometer:anemometer, compass:compass /}
+    </section>
     #{listreadings station:station/}
-  #{/if}
+    #{/if}
 
-  #{addreading station:station/}
+    #{addreading station:station/}
 </section>

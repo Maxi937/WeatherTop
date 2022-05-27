@@ -4,35 +4,35 @@
 #{menu id:"admin"/}
 
 <section class="ui segment">
-  <h2 class="ui header">
+    <h2 class="ui header">
 
-  </h2>
-  <table class="ui fixed table">
-    <thead>
-      <tr>
-        <th>ID </th>
-        <th>Weather Code</th>
-        <th>Temperature</th>
-        <th>Wind Speed</th>
-      </tr>
-    </thead>
-    <tbody>
-    #{list items:reading, as:'reading'}
-    <tr>
-      <td>
-        ${reading.id}
-      </td>
-      <td>
-        ${reading.code}
-      </td>
-      <td>
-        ${reading.temperature}
-      </td>
-      <td>
-        ${reading.windSpeed}
-      </td>
-    </tr>
-    #{/list}
-    </tbody>
-  </table>
+    </h2>
+    <table class="ui fixed table">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Weather Code</th>
+            <th>Temperature</th>
+            <th>Wind Speed</th>
+        </tr>
+        </thead>
+        <tbody>
+        #{list items:reading, as:'reading'}
+        <tr>
+            <td>
+                ${reading.id}
+            </td>
+            <td>
+                ${reading.code}
+            </td>
+            <td>
+                ${reading.temperature}
+            </td>
+            <td>
+                ${reading.windSpeed}
+            </td>
+        </tr>
+        #{/list}
+        </tbody>
+    </table>
 </section>

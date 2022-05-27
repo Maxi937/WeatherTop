@@ -1,7 +1,6 @@
 #{list items:_station, as:'station'}
 
 #{if station.readings.size() == 0}
-
 <div class="ui right aligned inverted five cards">
     <div class=" card">
         <div class="ui inverted segment">
@@ -45,12 +44,10 @@
             <i class="huge center orange stroopwafel icon"></i>
         </div>
     </div>
-
-
-    #{/if}
+</div>
+#{/if}
 
 #{if station.readings.size() > 0}
-
 <div class="ui right aligned inverted five cards">
     <div class=" card">
         <div class="ui inverted segment">
@@ -66,8 +63,6 @@
             </p>
         </div>
     </div>
-
-
     <div class="card">
         <div class="ui inverted segment">
             <i class="right floated huge red ${_anemometer.getWeatherCodeIcon(station.getLastReading())}"></i>
@@ -79,7 +74,6 @@
             </p>
         </div>
     </div>
-
     <div class="card">
         <div class="ui inverted segment">
             <i class="right floated huge blue temperature low icon"></i>
@@ -94,10 +88,7 @@
                 Min Temp: ${station.getMinMax("Temp").get("min")} C
             </p>
         </div>
-
     </div>
-
-
     <div class="card">
         <div class="ui inverted segment">
             <i class="right floated huge green wind icon"></i>
@@ -115,7 +106,6 @@
             </p>
         </div>
     </div>
-
     <div class="card">
         <div class="ui inverted segment">
             <i class="right floated huge orange stroopwafel icon"></i>

@@ -5,37 +5,31 @@ import play.Logger;
 import play.mvc.Controller;
 import weathertop.weather.instrument.Anemometer;
 
-public class Accounts extends Controller
-{
-    public static void index()
-    {
+public class Accounts extends Controller {
+    public static void index() {
         Member member = Accounts.getLoggedInMember();
         Logger.info("rendering member.html");
-        Logger.info("Member ID: "+ member);
+        Logger.info("Member ID: " + member);
         Anemometer anemometer = new Anemometer();
-        render("member.html",member, anemometer);
+        render("member.html", member, anemometer);
     }
 
-    public static void signup()
-    {
+    public static void signup() {
         render("signup.html");
     }
 
-    public static void login()
-    {
+    public static void login() {
         render("login.html");
     }
 
-    public static void register(Long id, String firstname, String lastname, String email, String password)
-    {
+    public static void register(Long id, String firstname, String lastname, String email, String password) {
         Logger.info("Registering new user " + email);
         Member member = new Member(firstname, lastname, email, password);
         member.save();
         redirect("/");
     }
 
-    public static void authenticate(String email, String password)
-    {
+    public static void authenticate(String email, String password) {
 
         Logger.info("Attempting to authenticate with " + email + ":" + password);
 
@@ -43,7 +37,7 @@ public class Accounts extends Controller
         if ((member != null) && (member.checkPassword(password) == true)) {
             Logger.info("Authentication successful");
             session.put("logged_in_Memberid", member.id);
-            redirect ("/dashboard");
+            redirect("/dashboard");
         } else {
             System.out.println(member);
             Logger.info("Authentication failed");
@@ -51,14 +45,12 @@ public class Accounts extends Controller
         }
     }
 
-    public static void logout()
-    {
+    public static void logout() {
         session.clear();
-        redirect ("/");
+        redirect("/");
     }
 
-    public static Member getLoggedInMember()
-    {
+    public static Member getLoggedInMember() {
         Member member = null;
         if (session.contains("logged_in_Memberid")) {
             String memberId = session.get("logged_in_Memberid");
