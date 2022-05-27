@@ -8,8 +8,8 @@ import java.util.HashMap;
 
 public class Anemometer extends WeatherInstrument {
 
-    ArrayList<HashMap<String, String>> weatherCodeData;
-    ArrayList<HashMap<String, Integer>> beaufortScaleData;
+    private ArrayList<HashMap<String, String>> weatherCodeData;
+    private ArrayList<HashMap<String, Integer>> beaufortScaleData;
 
     public Anemometer() {
         weatherCodeData = (ArrayList<HashMap<String, String>>) weatherInstrumentData.get("weather");

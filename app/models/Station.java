@@ -38,7 +38,6 @@ public class Station extends Model {
         if (this.readings.size() > 0) {
             lastReading = readings.get(readings.size() - 1);
         }
-
         return lastReading;
     }
 
@@ -62,7 +61,7 @@ public class Station extends Model {
      */
     public HashMap<String, Float> getMinMax(String readingToMinMax) {
         HashMap<String, String> readingAsHashMap;
-        HashMap<String, Float> result = new HashMap<>();
+        HashMap<String, Float> minMax = new HashMap<>();
 
         float max = 0;
         float min;
@@ -76,10 +75,10 @@ public class Station extends Model {
         }
 
         min = getMin(max, readingToMinMax);
-        result.put("min", min);
-        result.put("max", max);
+        minMax.put("min", min);
+        minMax.put("max", max);
 
-        return result;
+        return minMax;
     }
 
     // Min by starting at the Max value and decrementing through each temp, updating new Min if < current Min

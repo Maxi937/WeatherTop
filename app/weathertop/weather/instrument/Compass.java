@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class Compass extends WeatherInstrument {
 
-    ArrayList<HashMap<String, String>> compassData;
+    private ArrayList<HashMap<String, String>> compassData;
 
     public Compass() {
         compassData = (ArrayList<HashMap<String, String>>) weatherInstrumentData.get("compass");
