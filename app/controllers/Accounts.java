@@ -1,17 +1,23 @@
 package controllers;
 
 import models.Member;
+import models.Station;
 import play.Logger;
 import play.mvc.Controller;
 import weathertop.weather.instrument.Anemometer;
 
+import java.util.Comparator;
+import java.util.List;
+
 public class Accounts extends Controller {
     public static void index() {
         Member member = Accounts.getLoggedInMember();
+        List<Station> stations = member.stations;
+        stations.sort(Comparator.comparing(Station::getName));
         Logger.info("rendering member.html");
         Logger.info("Member ID: " + member);
         Anemometer anemometer = new Anemometer();
-        render("member.html", member, anemometer);
+        render("member.html", member, anemometer, stations);
     }
 
     public static void signup() {

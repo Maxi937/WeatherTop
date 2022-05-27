@@ -1,5 +1,16 @@
 # WeatherTop Readme
 
+## Known Issues
+Readings are not validated properly.
+- textual inputs in a field that should take numbers will crash the program.
+
+## Github
+https://github.com/Maxi937/WeatherTop
+
+## Deployed
+https://pacific-escarpment-80032.herokuapp.com/
+
+## References
 1. https://www.playframework.com/documentation/1.2.x/tags
    - Info on how to use lists
    - Info on tags

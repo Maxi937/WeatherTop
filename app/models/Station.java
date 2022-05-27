@@ -49,22 +49,23 @@ public class Station extends Model {
         return this.name;
     }
 
-
+    ///////
     /* Param String: What type of reading to MinMax -
-        - "Temp"
-        - "WindSpeed"
-        - "WindPressure"
-       Calls a HashMap of all reading types from each of the readings in The Station
-       Uses the Param to look up key
-       MinMax
-       Result as HashMap - Min : Max
-     */
+     *   - "Temp"
+     *   - "WindSpeed"
+     *   - "WindPressure"
+     *  Calls a HashMap of all reading types from each of the readings in The Station
+     *  Uses the Param to look up key
+     *  Result as HashMap - Min : Max
+     *////
     public HashMap<String, Float> getMinMax(String readingToMinMax) {
         HashMap<String, String> readingAsHashMap;
+        readingAsHashMap = readings.get(0).getReadingAsHashMap();
+
         HashMap<String, Float> minMax = new HashMap<>();
 
         float max = 0;
-        float min;
+        float min = Float.parseFloat(readingAsHashMap.get(readingToMinMax));
 
         for (Reading reading : this.readings) {
             readingAsHashMap = reading.getReadingAsHashMap();
@@ -72,19 +73,21 @@ public class Station extends Model {
             if (max <= Float.parseFloat(readingAsHashMap.get(readingToMinMax))) {
                 max = Float.parseFloat(readingAsHashMap.get(readingToMinMax));
             }
+            if (min >= Float.parseFloat(readingAsHashMap.get(readingToMinMax))) {
+                min = Float.parseFloat(readingAsHashMap.get(readingToMinMax));
+            }
         }
-
-        min = getMin(max, readingToMinMax);
         minMax.put("min", min);
         minMax.put("max", max);
 
         return minMax;
     }
 
-    // Min by starting at the Max value and decrementing through each temp, updating new Min if < current Min
-    public float getMin(float max, String readingToMin) {
+    public float getMin(String readingToMin) {
         HashMap<String, String> readingAsHashMap;
-        float minTemp = max;
+        readingAsHashMap = readings.get(0).getReadingAsHashMap();
+
+        float minTemp = Float.parseFloat(readingAsHashMap.get(readingToMin));
 
         for (int i = this.readings.size() - 1; i >= 0; i--) {
             readingAsHashMap = readings.get(i).getReadingAsHashMap();
@@ -92,7 +95,6 @@ public class Station extends Model {
             if (Float.parseFloat(readingAsHashMap.get(readingToMin)) <= minTemp) {
                 minTemp = Float.parseFloat(readingAsHashMap.get(readingToMin));
             }
-
         }
         return minTemp;
     }

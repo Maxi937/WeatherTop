@@ -4,16 +4,14 @@
 
 # Home page
 GET     /                                       Start.index
-
-GET    /signup                                  Accounts.signup
-GET    /login                                   Accounts.login
-POST   /register                                Accounts.register
-POST   /authenticate                            Accounts.authenticate
-GET    /logout                                  Accounts.logout
-GET    /member                                  Accounts.index
-GET    /editmemberdetails                       MemberCtrl.index
-POST   /editmemberdetails/member                MemberCtrl.editdetails
-
+GET     /signup                                 Accounts.signup
+GET     /login                                  Accounts.login
+POST    /register                               Accounts.register
+POST    /authenticate                           Accounts.authenticate
+GET     /logout                                 Accounts.logout
+GET     /member                                 Accounts.index
+GET     /editmemberdetails                      MemberCtrl.index
+POST    /editmemberdetails/member               MemberCtrl.editdetails
 GET     /dashboard                              Dashboard.index
 GET     /about                                  About.index
 GET     /admin                                  Admin.index

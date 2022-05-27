@@ -32,7 +32,7 @@ ${member.firstName} ${member.lastName}
 
         <div class="column">
             #{list items:member, as:'member'}
-            #{listmemberreadings member:member, anemometer:anemometer/}
+                #{listmemberreadings anemometer:anemometer, stations:stations/}
             #{/list}
         </div>
     </div>
