@@ -6,6 +6,7 @@ Readings are not validated properly.
 
 ## Github
 https://github.com/Maxi937/WeatherTop
+https://github.com/Maxi937/WeatherTop/releases/tag/v5.0-release-3
 
 ## Deployed
 https://pacific-escarpment-80032.herokuapp.com/
