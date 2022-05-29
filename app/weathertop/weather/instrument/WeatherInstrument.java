@@ -25,9 +25,4 @@ public class WeatherInstrument {
     return weatherInstrumentData;
   }
 
-  public float getCelsiusToFahrenheit(Reading reading) {
-    return 0F;
-  }
-
-
 }
