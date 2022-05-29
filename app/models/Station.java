@@ -114,21 +114,21 @@ public class Station extends Model {
   }
 
   public String getTrendAnalysis(String readingToTrendAnalysis) {
-    ArrayList<Float> resultsList = new ArrayList<>();
+    ArrayList<Float> lastThreeReadings = new ArrayList<>();
     int x = 0;
 
     if (this.readings.size() >= 3) {
       for (int i = this.readings.size() - 3; i <= this.readings.size() - 1; i++) {
         HashMap<String, String> readingAsHashMap = readings.get(i).getReadingAsHashMap();
-        resultsList.add(x, Float.valueOf(readingAsHashMap.get(readingToTrendAnalysis)));
+        lastThreeReadings.add(x, Float.valueOf(readingAsHashMap.get(readingToTrendAnalysis)));
         x++;
       }
 
-      if (resultsList.get(1) > resultsList.get(0) && resultsList.get(1) < resultsList.get(2)) {
+      if (lastThreeReadings.get(1) > lastThreeReadings.get(0) && lastThreeReadings.get(1) < lastThreeReadings.get(2)) {
         return "arrow up icon";
       }
 
-      if (resultsList.get(1) < resultsList.get(0) && resultsList.get(1) > resultsList.get(2)) {
+      if (lastThreeReadings.get(1) < lastThreeReadings.get(0) && lastThreeReadings.get(1) > lastThreeReadings.get(2)) {
         return "arrow down icon";
       }
     }
