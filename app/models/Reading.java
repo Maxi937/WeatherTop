@@ -3,9 +3,6 @@ package models;
 import javax.persistence.Entity;
 
 import play.db.jpa.Model;
-import weathertop.weather.instrument.Anemometer;
-import weathertop.weather.instrument.Compass;
-import weathertop.weather.instrument.Thermometer;
 
 import java.util.ArrayList;
 import java.util.Date;

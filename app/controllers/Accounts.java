@@ -4,7 +4,7 @@ import models.Member;
 import models.Station;
 import play.Logger;
 import play.mvc.Controller;
-import weathertop.weather.instrument.Anemometer;
+import weatherinstrumentpckg.Anemometer;
 
 import java.util.Comparator;
 import java.util.List;

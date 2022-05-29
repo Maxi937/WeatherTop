@@ -1,4 +1,4 @@
-package weathertop.weather.instrument;
+package weatherinstrumentpckg;
 
 import models.Reading;
 

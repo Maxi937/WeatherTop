@@ -1,8 +1,6 @@
-package weathertop.weather.instrument;
+package weatherinstrumentpckg;
 
-import models.Reading;
 import org.yaml.snakeyaml.Yaml;
-import play.Logger;
 
 import java.io.InputStream;
 import java.util.Map;

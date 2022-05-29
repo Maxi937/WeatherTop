@@ -5,9 +5,9 @@ import models.Reading;
 import models.Station;
 import play.Logger;
 import play.mvc.Controller;
-import weathertop.weather.instrument.Anemometer;
-import weathertop.weather.instrument.Compass;
-import weathertop.weather.instrument.Thermometer;
+import weatherinstrumentpckg.Anemometer;
+import weatherinstrumentpckg.Compass;
+import weatherinstrumentpckg.Thermometer;
 
 public class MemberCtrl extends Controller {
 

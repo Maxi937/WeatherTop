@@ -1,10 +1,6 @@
 package models;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+
 import java.util.*;
 
 import javax.persistence.CascadeType;
@@ -14,8 +10,6 @@ import java.util.Date;
 
 import play.db.jpa.Model;
 
-
-//TODO: Refactor MinMax value, Should have a function for Min and a function for Max - all Min Max should do is hit them functions and make the result a hash map
 @Entity
 public class Station extends Model {
   public String name;
